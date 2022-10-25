@@ -1,4 +1,6 @@
-# CSSE_Ticketing_System_for_a_Public_Transport_Network
+# CSSE_Project
+
+# Ticketing_System_for_a_Public_Transport_Network
 
 
 “Your Ticket” is a ticketing system for people who travel by public transport in Sri Lanka. Here, the passengers are issued with a token ticket which allows them to travel across any kind of public transport bus throughout Sri Lanka. There are two possible users of this ticketing system including the local citizens and foreigners. This token contains a QR which can be scanned by the driver or coach of the bus when a passenger gets on to it to start his journey. This token has it’s credit amount which gets deducted according to the bus fare. 
