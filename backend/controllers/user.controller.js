@@ -33,8 +33,22 @@ const RegisterUser = async (req, res) => {
     }
   };
 
+//user login
+const LoginUser = async (req, res) => {
+    try {
+      const { username, password } = req.body;
+      const User_s = await User.findByCredentials(username, password);
+      const token = await User_s.generateAuthToken();
+      res.status(200).send({ token: token, User_s: User_s });
+    } catch (error) {
+      res.status(500).send({ error: error.message });
+      console.log(error);
+    }
+  };
+  
+
   module.exports = {
     RegisterUser,
-    
+    LoginUser,
   };
   
