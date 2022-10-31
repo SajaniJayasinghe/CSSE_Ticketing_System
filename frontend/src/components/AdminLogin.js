@@ -1,10 +1,10 @@
 import React from 'react';
-import AdminNavBar from './Layout/AdminNavBar';
+import AdminDashboardNavbar from './Layout/AdminDashboardNavbar';
 
 export default function AdminLogin() {
   return (
     <div>
-        <AdminNavBar/>
-    </div>
+      <AdminDashboardNavbar/>
+      AdminLogin</div>
   )
 }

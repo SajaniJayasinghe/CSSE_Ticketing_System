@@ -1,37 +1,12 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import Button from "@material-ui/core/Button";
 
-export default class AdminNavBar extends Component {
+export default class AdminDashboardNavbar extends Component {
   render() {
     return (
       <div>
-        <nav class="navbar navbar-expand-lg ">
-          <div class="container">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <Button
-                    href="/adminlogin"
-                    style={{
-                      marginTop: 10,
-                      marginLeft: 1200,
-                      marginRight: 20,
-                      color: "black",
-                      height: 75 + "%",
-                      width: 9 + "%",
-                      background: "#3B9C9C",
-                      borderRadius: 20,
-                    }}
-                  >
-                    Sign In
-                  </Button>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
         <img
-          style={{ marginLeft: 25, marginTop: -60 }}
+          style={{ marginLeft: 25, marginTop: 8 }}
           src="https://res.cloudinary.com/nibmsa/image/upload/v1667199794/Screenshot_2022-10-31_at_12.32.06-removebg-preview_y9b5er.png"
           width="150px"
           height="110"
@@ -64,8 +39,8 @@ export default class AdminNavBar extends Component {
                       color: "white",
                       fontFamily: "times new roman",
                       fontSize: 20,
-                      marginLeft: 400,
-                      marginRight: 30,
+                      marginLeft: 200,
+                      marginRight: 20,
                     }}
                   >
                     <b>Home</b>
@@ -82,7 +57,7 @@ export default class AdminNavBar extends Component {
                       fontFamily: "times new roman",
                       fontSize: 20,
                       marginLeft: 30,
-                      marginRight: 30,
+                      marginRight: 20,
                     }}
                   >
                     <b>About</b>
@@ -98,7 +73,7 @@ export default class AdminNavBar extends Component {
                       color: "white",
                       fontFamily: "times new roman",
                       fontSize: 20,
-                      marginLeft: 30,
+                      marginLeft: 20,
                       marginRight: 30,
                     }}
                   >
@@ -132,10 +107,25 @@ export default class AdminNavBar extends Component {
                       color: "white",
                       fontFamily: "times new roman",
                       fontSize: 20,
-                      marginLeft: 10,
+                      marginLeft: 30,
                     }}
                   >
                     <b>Time Table</b>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    aria-current="page"
+                    href="#"
+                    style={{
+                      color: "white",
+                      fontFamily: "times new roman",
+                      fontSize: 20,
+                      marginLeft: 35,
+                    }}
+                  >
+                    <b>Inspectors Registration</b>
                   </a>
                 </li>
               </ul>
@@ -143,6 +133,6 @@ export default class AdminNavBar extends Component {
           </div>
         </nav>
       </div>
-    );
+    )
   }
 }
