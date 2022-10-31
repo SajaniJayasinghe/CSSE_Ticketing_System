@@ -18,8 +18,8 @@ app.use(cors());
 const PORT = process.env.PORT || 8080;
 
 app.use("/api/user", UserRouter);
-app.use("/api/admin", AdminRouter);
 app.use("/api/bus", BusRouter);
+app.use("/api/busRoute", BusRouteRouter);
 
 const busPDFRoutes = require("./routes/PDF-generator/bus-report");
 app.use(busPDFRoutes);
