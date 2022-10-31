@@ -166,7 +166,7 @@ export default class footer extends Component {
                       />
                     </Button>
                     <a style={{ color: "white" }}>
-                      Email : ucl.institute@gmail.com
+                      Email : smartlinetravels@gmail.com
                     </a>
                   </ul>
                 </div>

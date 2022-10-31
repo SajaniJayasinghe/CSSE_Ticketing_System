@@ -45,7 +45,7 @@ export default function AddBus() {
           style={{
             width: 1000,
             background: "#B0E0E6",
-            height: 600,
+            height: 500,
             backgroundSize: "1000px ",
           }}
         >
@@ -57,7 +57,7 @@ export default function AddBus() {
                     src="https://trucknbus.hyundai.com/global/en/upload/carmng/KV00000070/elec-city-key-visual10-m.jpg"
                     style={{
                       objectFit: "cover",
-                      height: 600,
+                      height: 500,
                       marginLeft: -30,
                       marginTop: -16,
                     }}
@@ -97,7 +97,7 @@ export default function AddBus() {
                           fontSize: 18,
                         }}
                       >
-                        1. Bus Number :
+                        1. Bus Number 
                       </div>
                       <input
                         type="text"
@@ -126,7 +126,7 @@ export default function AddBus() {
                           fontSize: 18,
                         }}
                       >
-                        2. Length :
+                        2. Length (KM/M) 
                       </div>
                       <input
                         type="text"
@@ -155,7 +155,7 @@ export default function AddBus() {
                           fontSize: 18,
                         }}
                       >
-                        3. Departure:
+                        3. Departure
                       </div>
                       <input
                         type="text"
@@ -184,7 +184,7 @@ export default function AddBus() {
                           fontSize: 18,
                         }}
                       >
-                        4. Destination :
+                        4. Destination 
                       </div>
                       <input
                         type="text"
@@ -213,7 +213,7 @@ export default function AddBus() {
                           fontSize: 18,
                         }}
                       >
-                        5. Routes Number :
+                        5. Routes Number 
                       </div>
                       <input
                         type="number"
@@ -242,7 +242,7 @@ export default function AddBus() {
                           fontSize: 18,
                         }}
                       >
-                        6. Seats :
+                        6. Seats 
                       </div>
                       <select
                         className="form-control"
