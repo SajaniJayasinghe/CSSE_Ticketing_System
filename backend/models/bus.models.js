@@ -37,6 +37,10 @@ const BusSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  sheets:{
+    type: String,
+    required: true,
+  }
 });
 const bus = mongoose.model("bus", BusSchema);
 module.exports = bus;

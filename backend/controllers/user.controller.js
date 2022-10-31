@@ -64,7 +64,7 @@ const GetUserProfile = async (req,res)=>{
     }
   }
 
-  //user profile update
+//user profile update
 const UpdateProfile = async (req,res)=>{
     try {
       const {
