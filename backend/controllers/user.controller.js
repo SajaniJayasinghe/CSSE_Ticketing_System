@@ -11,7 +11,6 @@ const RegisterUser = async (req, res) => {
       if (existingUser) {
         throw new Error("User already exists");
       }
-  
       const createdUser = {
         name, 
         username,
@@ -20,7 +19,6 @@ const RegisterUser = async (req, res) => {
         myplan, 
         password 
       };
-  
       const newuser = new User(createdUser);
       await newuser.save();
       const token = await newuser.generateAuthToken();

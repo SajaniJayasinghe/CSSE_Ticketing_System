@@ -1,35 +1,87 @@
 import React, { Component } from "react";
+import Button from "@material-ui/core/Button";
 
 export default class AdminNavBar extends Component {
   render() {
     return (
       <div>
+        <nav class="navbar navbar-expand-lg ">
+          <div class="container">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <Button
+                    style={{
+                      marginTop: 10,
+                      marginLeft: 1100,
+                      marginRight: 20,
+                      color: "black",
+                      height: 75 + "%",
+                      width: 9 + "%",
+                      background: "#3B9C9C",
+                      borderRadius: 20,
+                    }}
+                  >
+                    Sign In
+                  </Button>
+                </li>
+
+                <li class="nav-item">
+                  <Button
+                    style={{
+                      marginTop: 10,
+                      marginLeft: 40,
+                      marginRight: 8,
+                      height: 75 + "%",
+                      color: "black",
+                      width: 90 + "%",
+                      background: "#3B9C9C",
+                      borderRadius: 20,
+                    }}
+                  >
+                    Sign Up
+                  </Button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
         <img
-          style={{ marginLeft: 25 }}
-          src="https://res.cloudinary.com/nibmsa/image/upload/v1666932800/Screenshot_2022-10-28_at_10.21.05-removebg-preview_zronda.png"
-          width="180px"
-          height="120"
+          style={{ marginLeft: 25, marginTop: -60 }}
+          src="https://res.cloudinary.com/nibmsa/image/upload/v1667199794/Screenshot_2022-10-31_at_12.32.06-removebg-preview_y9b5er.png"
+          width="150px"
+          height="110"
           className="d-inline-block align-top"
           alt=""
         ></img>
-         <nav
+        <nav
           class="navbar navbar-expand-lg "
-          style={{ backgroundColor: "#DAE7F8" }}
+          style={{ backgroundColor: "#033E3E" }}
         >
           <div class="container">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li>
+                  <img
+                    style={{ marginLeft: -50 }}
+                    src="https://res.cloudinary.com/nibmsa/image/upload/v1667199160/Screenshot_2022-10-31_at_12.21.28-removebg-preview_hf7bkn.png"
+                    width="300px"
+                    height="50"
+                    className="d-inline-block align-top"
+                    alt=""
+                  ></img>
+                </li>
                 <li class="nav-item">
                   <a
                     class="nav-link"
                     aria-current="page"
                     href="#"
                     style={{
-                      color: "black",
+                      color: "white",
                       fontFamily: "times new roman",
                       fontSize: 20,
-                      marginLeft: 100,
-                      marginRight: 50,
+                      marginLeft: 400,
+                      marginRight: 30,
                     }}
                   >
                     <b>Home</b>
@@ -42,30 +94,14 @@ export default class AdminNavBar extends Component {
                     aria-current="page"
                     href="#"
                     style={{
-                      color: "black",
+                      color: "white",
                       fontFamily: "times new roman",
                       fontSize: 20,
-                      marginLeft: 50,
-                      marginRight: 50,
+                      marginLeft: 30,
+                      marginRight: 30,
                     }}
                   >
-                    <b>Bus </b>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    aria-current="page"
-                    href="https://www.coursera.org/?irclickid=z5lQ0KztYxyNUTlwSBRZ803HUkDQSGRp7XFO0E0&irgwc=1&utm_medium=partners&utm_source=impact&utm_campaign=3030402&utm_content=b2c"
-                    style={{
-                      color: "black",
-                      fontFamily: "times new roman",
-                      fontSize: 20,
-                      marginLeft: 50,
-                      marginRight: 50,
-                    }}
-                  >
-                    <b>Resourses</b>
+                    <b>About</b>
                   </a>
                 </li>
 
@@ -73,48 +109,49 @@ export default class AdminNavBar extends Component {
                   <a
                     class="nav-link"
                     aria-current="page"
-                    href="/readblogs"
+                    href="#"
                     style={{
-                      color: "black",
+                      color: "white",
                       fontFamily: "times new roman",
                       fontSize: 20,
-                      marginLeft: 50,
-                      marginRight: 50,
+                      marginLeft: 30,
+                      marginRight: 30,
                     }}
                   >
-                    <b>Blogs</b>
+                    <b>Contact</b>
                   </a>
                 </li>
 
                 <li class="nav-item">
                   <a
                     class="nav-link"
-                    href="/howtowork"
+                    aria-current="page"
+                    href="#"
                     style={{
-                      color: "black",
+                      color: "white",
                       fontFamily: "times new roman",
                       fontSize: 20,
-                      marginLeft: 50,
-                      marginRight: 50,
+
+                      marginRight: 30,
                     }}
                   >
-                    <b>How to Work</b>
+                    <b>Routes</b>
                   </a>
                 </li>
 
                 <li class="nav-item">
                   <a
                     class="nav-link"
-                    href="https://mail.google.com/"
+                    aria-current="page"
+                    href="#"
                     style={{
-                      color: "black",
+                      color: "white",
                       fontFamily: "times new roman",
                       fontSize: 20,
-                      marginLeft: 50,
-                      marginRight: 50,
+                      marginLeft: 10,
                     }}
                   >
-                    <b>Emails</b>
+                    <b>Time Table</b>
                   </a>
                 </li>
               </ul>
