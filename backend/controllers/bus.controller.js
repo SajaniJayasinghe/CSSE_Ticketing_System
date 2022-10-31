@@ -1,3 +1,4 @@
+const bus = require("../models/bus.models");
 const Bus = require("../models/bus.models");
 
 //ad new buses
