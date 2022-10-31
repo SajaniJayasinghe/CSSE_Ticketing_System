@@ -3,9 +3,8 @@ const Bus = require("../models/bus.models");
 //ad new buses
 const BusRegister = async (req, res) => {
   let newBus = new Bus(req.body);
-
   const isBusCheck = await Bus.find({
-    busNumberPlate: newBus.busNumberPlate,
+    busNumber: newBus.busNumber,
   });
 
   if (isBusCheck.length == 0) {
