@@ -5,19 +5,19 @@ const BusRegister = async (req, res) => {
   let newBus = new Bus(req.body);
 
   const isBusCheck = await Bus.find({
-    busID: newBus.busID,
+    busNumberPlate: newBus.busNumberPlate,
   });
 
   if (isBusCheck.length == 0) {
-    newBus.save((err)=>{
-      if(err){
+    newBus.save((err) => {
+      if (err) {
         return res.status(400).json({
-          error :err ,
+          error: err,
         });
       }
       return res.status(200).json({
         success: "New Bus Added Successfully !!",
-        })
+      });
     });
   } else {
     return res.status(200).send({
@@ -43,8 +43,8 @@ const GetAllBuses = async (req, res) => {
 
 //get specific bus
 const GetOneBus = async (req, res) => {
-  let busID = req.params.busID;
-  Bus.findById(busID, (err, bus) => {
+  let busNumberPlate = req.params.busNumberPlate;
+  Bus.findById(busNumberPlate, (err, bus) => {
     if (err) {
       return res.status(400).json({
         error: err,
@@ -60,7 +60,7 @@ const GetOneBus = async (req, res) => {
 //update bus
 const UpdateBus = (req, res) => {
   Bus.findByIdAndUpdate(
-    req.params.busID,
+    req.params.busNumberPlate,
     {
       $set: req.body,
     },
@@ -79,7 +79,7 @@ const UpdateBus = (req, res) => {
 
 //delete Bus
 const DeleteBus = (req, res) => {
-  Bus.findByIdAndRemove(req.params.busID).exec((err, deletebus) => {
+  Bus.findByIdAndRemove(req.params.busNumberPlate).exec((err, deletebus) => {
     if (err)
       return res.status(400).json({
         message: "Deletion Unsuccessfull",
