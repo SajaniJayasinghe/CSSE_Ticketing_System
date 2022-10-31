@@ -13,7 +13,7 @@ export default class AdminNavBar extends Component {
                   <Button
                     style={{
                       marginTop: 10,
-                      marginLeft: 1100,
+                      marginLeft: 1200,
                       marginRight: 20,
                       color: "black",
                       height: 75 + "%",
@@ -23,23 +23,6 @@ export default class AdminNavBar extends Component {
                     }}
                   >
                     Sign In
-                  </Button>
-                </li>
-
-                <li class="nav-item">
-                  <Button
-                    style={{
-                      marginTop: 10,
-                      marginLeft: 40,
-                      marginRight: 8,
-                      height: 75 + "%",
-                      color: "black",
-                      width: 90 + "%",
-                      background: "#3B9C9C",
-                      borderRadius: 20,
-                    }}
-                  >
-                    Sign Up
                   </Button>
                 </li>
               </ul>
