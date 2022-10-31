@@ -9,6 +9,7 @@ const UserRouter = require("./routes/user.routes");
 const AdminRouter = require("./routes/admin.routes");
 const BusRouter = require("./routes/bus.routes");
 
+
 const app = express();
 
 require("dotenv").config();
@@ -21,6 +22,8 @@ app.use("/api/user", UserRouter);
 app.use("/api/admin",AdminRouter);
 app.use("/api/bus",BusRouter);
 
+const busPDFRoutes = require("./routes/PDF-generator/bus-report");
+app.use(busPDFRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is up and running on port number: ${PORT}`);

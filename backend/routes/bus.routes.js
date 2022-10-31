@@ -11,8 +11,8 @@ const {
 
 BusRouter.post("/addbus",BusRegister);
 BusRouter.get("/getallbus",GetAllBuses);
-BusRouter.get("/getonebus/:busID",GetOneBus);
-BusRouter.put("/updatebus/:busID",UpdateBus);
-BusRouter.delete("/deletebus/:busID",DeleteBus);
+BusRouter.get("/getonebus/:busNumberPlate",GetOneBus);
+BusRouter.put("/updatebus/:busNumberPlate",UpdateBus);
+BusRouter.delete("/deletebus/:busNumberPlate",DeleteBus);
 
 module.exports = BusRouter;
