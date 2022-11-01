@@ -6,6 +6,7 @@ import AdminLogin from "./components/AdminLogin";
 import AdminDashboard from "./components/AdminDashboard";
 import AddBus from "./components/AddBus";
 import BusDetails from "./components/BusDetails";
+import BusUpdate from "./components/BusUpdate";
 
 export default class App extends Component {
     render(){
@@ -17,6 +18,7 @@ export default class App extends Component {
                     <Route path="/admindashboard" element ={<AdminDashboard/>}/>
                     <Route path="/addbus" element ={<AddBus/>}/>
                     <Route path="/busDetails" element ={<BusDetails/>}/>
+                    <Route path="/updatebus/:busNumberPlate" element ={<BusUpdate/>}/>
                 </Routes>
             </Router>
         )

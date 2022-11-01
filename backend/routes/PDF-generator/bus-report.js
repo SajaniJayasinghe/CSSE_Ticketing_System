@@ -56,7 +56,6 @@ router.post("/generatebusreport", async function (req, res, next) {
       "Destination",
       "Route Number",
       "Seats",
-      "Date"
     ],
     rows: [],
   };
@@ -69,7 +68,6 @@ router.post("/generatebusreport", async function (req, res, next) {
       BusItem.destination,
       BusItem.route,
       BusItem.seats,
-      BusItem.timestamps
     ]);
   }
   // Draw the table

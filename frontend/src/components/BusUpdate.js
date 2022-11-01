@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import AdminDashboardNavbar from "./Layout/AdminDashboardNavbar";
 import Footer from "./Layout/Footer";
 import Button from "@material-ui/core/Button";
 
-export default function AddBus() {
+export default function BusUpdate() {
   const [busNumber, setbusNumber] = useState("");
   const [length, setlength] = useState("");
   const [departure, setdeparture] = useState("");
@@ -12,27 +13,47 @@ export default function AddBus() {
   const [route, setroute] = useState("");
   const [seats, setseats] = useState("");
 
-  const sendData = async (e) => {
-    e.preventDefault();
+  const params = useParams();
+  const busNumberPlate = params.busNumberPlate;
 
-    let data = {
-      busNumber: busNumber,
-      length: length,
-      departure: departure,
-      destination: destination,
-      route: route,
-      seats: seats,
-    };
-
+  useEffect(() => {
     axios
-      .post("http://localhost:8080/api/bus/addbus", data)
-      .then(() => {
-        alert("Bus Added Successfully");
-        window.location.href = "/busDetails";
-        console.log(data);
-      })
-      .catch((err) => {
-        alert("Bus already registered");
+      .get(`http://localhost:8080/api/bus/getonebus/${busNumberPlate}`)
+      .then((res) => {
+        if (res.data) {
+          setbusNumber(res.data.existingBus.busNumber);
+          setlength(res.data.existingBus.length);
+          setdeparture(res.data.existingBus.departure);
+          setdestination(res.data.existingBus.destination);
+          setroute(res.data.existingBus.route);
+          setseats(res.data.existingBus.seats);
+        }
+        console.log(res.data);
+      });
+  }, []);
+
+  const onUpdate = (e) => {
+    e.preventDefault();
+    const updateBus = {
+      busNumber,
+      length,
+      departure,
+      destination,
+      route,
+      seats,
+    };
+    axios
+      .put(
+        `http://localhost:8080/api/bus/updatebus/${busNumberPlate}`,
+        updateBus
+      )
+      .then((res) => {
+        if (res.data) {
+          alert("Update Successfully....!");
+          window.location.href = "/busDetails";
+        } else {
+          alert("Update Unsuccessfelly...!");
+        }
       });
   };
   return (
@@ -50,7 +71,7 @@ export default function AddBus() {
           }}
         >
           <div class="card-body">
-            <form action="" method="post" name="form" onSubmit={sendData}>
+            <form action="" method="post" name="form" onSubmit={onUpdate}>
               <div style={{ display: "flex" }}>
                 <div class="row g-0" style={{ flex: 1 }}>
                   <img
@@ -62,8 +83,6 @@ export default function AddBus() {
                       marginTop: -16,
                     }}
                   ></img>
-                  <br />
-                  <br />
                 </div>
 
                 <div class="col-xl-10" style={{ flex: 1 }}>
@@ -72,13 +91,13 @@ export default function AddBus() {
                       style={{
                         fontFamily: "times new roman",
                         fontSize: 36,
-                        marginLeft: 90,
+                        marginLeft: 50,
                         color: "#0C090A",
+                        marginTop: 15,
                       }}
                     >
                       <b>
-                        <br />
-                        <u>ADD&nbsp;NEW BUS</u>
+                        <u>UPDATE&nbsp; BUS DETAILS</u>
                       </b>
                     </h3>
                     <br />
@@ -97,17 +116,17 @@ export default function AddBus() {
                           fontSize: 18,
                         }}
                       >
-                        1. Bus Number 
+                        1. Bus Number
                       </div>
                       <input
                         type="text"
+                        value={busNumber}
                         class="form-control"
                         name="busNumber"
-                        placeholder="Enter Bus Number"
                         onChange={(e) => {
                           setbusNumber(e.target.value);
                         }}
-                        required
+                        readOnly
                       />
                     </div>
                     <div
@@ -126,13 +145,13 @@ export default function AddBus() {
                           fontSize: 18,
                         }}
                       >
-                        2. Length (KM/M) 
+                        2. Length (KM/M)
                       </div>
                       <input
                         type="text"
+                        value={length}
                         class="form-control"
                         name="length"
-                        placeholder="Enter Length"
                         onChange={(e) => {
                           setlength(e.target.value);
                         }}
@@ -159,9 +178,9 @@ export default function AddBus() {
                       </div>
                       <input
                         type="text"
+                        value={departure}
                         class="form-control"
                         name="departure"
-                        placeholder="Enter Departure"
                         onChange={(e) => {
                           setdeparture(e.target.value);
                         }}
@@ -184,13 +203,13 @@ export default function AddBus() {
                           fontSize: 18,
                         }}
                       >
-                        4. Destination 
+                        4. Destination
                       </div>
                       <input
                         type="text"
+                        value={destination}
                         class="form-control"
                         name="destination"
-                        placeholder="Enter Destination"
                         onChange={(e) => {
                           setdestination(e.target.value);
                         }}
@@ -213,13 +232,13 @@ export default function AddBus() {
                           fontSize: 18,
                         }}
                       >
-                        5. Routes Number 
+                        5. Routes Number
                       </div>
                       <input
                         type="number"
+                        value={route}
                         class="form-control"
                         name="route"
-                        placeholder="Enter Bus Route Number"
                         onChange={(e) => {
                           setroute(e.target.value);
                         }}
@@ -242,11 +261,12 @@ export default function AddBus() {
                           fontSize: 18,
                         }}
                       >
-                        6. Seats 
+                        6. Seats
                       </div>
                       <select
                         className="form-control"
                         name="seat"
+                        value={seats}
                         class="form-control"
                         onChange={(e) => setseats(e.target.value)}
                         required
@@ -274,7 +294,7 @@ export default function AddBus() {
                       disableElevation
                       type="submit"
                     >
-                      CREATE
+                      UPDATE
                     </Button>
                     &nbsp; &nbsp;
                     <Button

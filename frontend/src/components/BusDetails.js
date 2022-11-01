@@ -9,6 +9,7 @@ import IconButton from "@material-ui/core/IconButton";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditIcon from "@material-ui/icons/Edit";
 import DescriptionIcon from "@mui/icons-material/Description";
+import { saveAs } from 'file-saver';
 
 export default class BusDetails extends Component {
   constructor(props) {
@@ -56,7 +57,7 @@ export default class BusDetails extends Component {
         console.log(res);
         console.log(res.data);
         const pdfBlog = new Blob([res.data], { type: "application/pdf" });
-        // saveAs(pdfBlog, "BusReport.pdf");
+        saveAs(pdfBlog, "Bus Report.pdf");
       })
       .catch((err) => {
         console.log(err.message);
@@ -134,7 +135,7 @@ export default class BusDetails extends Component {
               {this.state.bus.map((bus, index) => (
                   <tr>
                     <th scope="row">{index + 1}</th>
-                    <td>{bus.busNumberPlate}</td>
+                    <td>{bus.busNumber}</td>
                     <td>{bus.length}</td>
                     <td>{bus.departure}</td>
                     <td>{bus.destination}</td>
@@ -149,7 +150,7 @@ export default class BusDetails extends Component {
                         aria-label="edit"
                         color="primary"
                         size="small"
-                        // href={`/update/${courses._id}`}
+                        href={`/updatebus/${bus._id}`}
                       >
                         <EditIcon fontSize="small" style={{ color: "#151B54" }} />
                       </IconButton>{" "}
@@ -167,7 +168,7 @@ export default class BusDetails extends Component {
               </tbody>
             </table>
           </div>
-        </div>
+        </div><br/>
         <Footer />
       </div>
     );
