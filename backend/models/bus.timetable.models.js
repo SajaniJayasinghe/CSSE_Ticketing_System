@@ -30,14 +30,7 @@ const timetableSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  busstops: [
-    {
-      busStopName: { 
-        type: String, 
-        trim: true 
-      },
-    },
-  ],
+  busstops: [{ type: String, trim: true }],
 });
 
 const timetable = mongoose.model("timetable", timetableSchema);
