@@ -13,8 +13,11 @@ export default function InspectorSignUp() {
   const [password, setpassword] = useState("");
   const [confirmpassword, setconfirmpassword] = useState("");
   const [route, setroute] = useState("");
-  const [role, setrole] = useState("");
   const [busNumber, setbusNumber] = useState("");
+  const [passportNo, setpassportNo] = useState("");
+  const [country, setcountry] = useState("");
+  const [userExpDate, setuserExpDate] = useState("");
+  const [role, setrole] = useState("");
 
   const sendData = async (e) => {
     e.preventDefault();
@@ -31,6 +34,9 @@ export default function InspectorSignUp() {
       role: role,
       route: route,
       busNumber: busNumber,
+      passportNo: passportNo,
+      country: country,
+      userExpDate: userExpDate,
     };
     if (password == confirmpassword) {
       console.log(newInspector);
@@ -56,6 +62,9 @@ export default function InspectorSignUp() {
     setrole("");
     setroute("");
     setbusNumber("");
+    setpassportNo("");
+    setcountry("");
+    setuserExpDate("");
   };
 
   return (
@@ -84,7 +93,7 @@ export default function InspectorSignUp() {
                       fontSize: 30,
                     }}
                   >
-                    <b>INSPECTOR&nbsp;&nbsp;REGISTERATION</b>
+                    <b>INSPECTOR&nbsp;&nbsp;REGISTRATION</b>
                   </h3>
                 </div>
                 <div className="col-xl-5">
@@ -183,10 +192,16 @@ export default function InspectorSignUp() {
                       >
                         <option value="">Select</option>
                         <option value="Inspector">Inspector</option>
+                        {/* <option value="LocalPassenager">LocalPassenager</option>
+                        <option value="ForeignPassenger">
+                          ForeignPassenger
+                        </option> */}
                       </select>
                     </div>
                   </div>
 
+                  {/* {role === "Inspector" ? ( */}
+                  {/* <> */}
                   <div className="form-outline mb-2">
                     <span
                       id="passwordHelpInline"
@@ -343,6 +358,8 @@ export default function InspectorSignUp() {
                       />
                     </div>
                   </div>
+                  {/* </>
+                  ) : null} */}
                 </div>
               </div>
               <br />

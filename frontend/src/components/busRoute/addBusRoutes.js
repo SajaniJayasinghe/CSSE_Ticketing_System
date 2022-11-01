@@ -11,16 +11,37 @@ import { useParams } from "react-router-dom";
 
 import { MenuProps, useStyles, busStops } from "./addBusRoutes.utils";
 
-function Apps() {
+function AddBusRoutes() {
   const classes = useStyles();
   const [selected, setSelected] = useState([]);
   const [busNumber, setbusNumber] = useState("");
   const [inspectorName, setInspectorName] = useState("");
+  const [departureTime, setDepartureTime] = useState("");
+  const [destinationTime, setDestinationTime] = useState("");
   const [departure, setdeparture] = useState("");
   const [destination, setdestination] = useState("");
   const [route, setroute] = useState("");
+  const [length, setlength] = useState("");
+  const [seats, setseats] = useState("");
+
   const params = useParams();
   const busNumberPlate = params.busNumberPlate;
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8080/api/bus/getonebus/${busNumberPlate}`)
+      .then((res) => {
+        if (res.data) {
+          setbusNumber(res.data.existingBus.busNumber);
+          setdeparture(res.data.existingBus.departure);
+          setdestination(res.data.existingBus.destination);
+          setroute(res.data.existingBus.route);
+          setlength(res.data.existingBus.length);
+          setseats(res.data.existingBus.seats);
+        }
+        console.log(res.data);
+      });
+  }, []);
+
   const handleChange = (event) => {
     const value = event.target.value;
     if (value[value.length - 1] === "all") {
@@ -40,6 +61,8 @@ function Apps() {
       destination: destination,
       busstops: selected,
       inspectorName: inspectorName,
+      departureTime: departureTime,
+      destinationTime: destinationTime,
     };
 
     axios
@@ -52,21 +75,10 @@ function Apps() {
       });
 
     setSelected([""]);
+    setDepartureTime("");
+    setDestinationTime("");
     console.log(new_group);
   };
-  useEffect(() => {
-    axios
-      .get(`http://localhost:8080/api/bus/getonebus/${busNumberPlate}`)
-      .then((res) => {
-        if (res.data) {
-          setbusNumber(res.data.existingBus.busNumber);
-          setdeparture(res.data.existingBus.departure);
-          setdestination(res.data.existingBus.destination);
-          setroute(res.data.existingBus.route);
-        }
-        console.log(res.data);
-      });
-  }, []);
 
   return (
     <form action="" method="post" name="form" onSubmit={sendData}>
@@ -95,6 +107,15 @@ function Apps() {
         />
         <input
           type="text"
+          value={departureTime}
+          class="form-control"
+          name="departureTime"
+          onChange={(e) => {
+            setdeparture(e.target.value);
+          }}
+        />
+        <input
+          type="text"
           value={destination}
           class="form-control"
           name="destination"
@@ -102,6 +123,15 @@ function Apps() {
             setdestination(e.target.value);
           }}
           readOnly
+        />
+        <input
+          type="text"
+          value={destinationTime}
+          class="form-control"
+          name="destinationTime"
+          onChange={(e) => {
+            setdestination(e.target.value);
+          }}
         />
         <input
           type="text"
@@ -152,4 +182,4 @@ function Apps() {
   );
 }
 
-export default Apps;
+export default AddBusRoutes;
