@@ -10,6 +10,7 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditIcon from "@material-ui/icons/Edit";
 import DescriptionIcon from "@mui/icons-material/Description";
 import { saveAs } from 'file-saver';
+import ControlPointIcon from '@mui/icons-material/ControlPoint';
 
 export default class BusDetails extends Component {
   constructor(props) {
@@ -127,6 +128,9 @@ export default class BusDetails extends Component {
                     <font color="black">Date</font>
                   </th>
                   <th>
+                    <font color="black">Add Routes</font>
+                  </th>
+                  <th>
                     <font color="black">Action</font>
                   </th>
                 </tr>
@@ -144,6 +148,20 @@ export default class BusDetails extends Component {
                     
                     <td>
                       {moment(bus.timestamps).format("DD/MM/YYYY")}
+                    </td>
+                    <td>
+                      <IconButton
+                        aria-label="edit"
+                        color="primary"
+                        size="small"
+                        style={{ marginLeft: 50 }}
+                        href={`/busRoutes/${bus._id}`}
+                      >
+                        <ControlPointIcon
+                          fontSize="small"
+                          style={{ color: "#151B54" }}
+                        />
+                      </IconButton>
                     </td>
                     <td>
                       <IconButton

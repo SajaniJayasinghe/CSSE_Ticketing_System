@@ -21,7 +21,7 @@ export default class App extends Component {
           <Route path="/addbus" element={<AddBus />} />
           <Route path="/busDetails" element={<BusDetails />} />
           <Route path="/updatebus/:busNumberPlate" element={<BusUpdate />} />
-          <Route path="/busRoutes/:id" element={<Apps />} />
+          <Route path="/busRoutes/:busNumberPlate" element={<Apps />} />
           <Route path="/busRoutes" element={<BusRouteDetails />} />
           <Route path="/inspectorsignup" element={<InspectorSignUp/>} />
           <Route path="/updatebusRoutes/:id" element={<UpdateBusRoutes/>} />

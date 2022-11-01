@@ -43,7 +43,7 @@ function Apps() {
     };
 
     axios
-      .post("http://localhost:8080/api/busRoute/addBusRoute", new_group)
+      .post("http://localhost:8080/api/busRoute/addbusroutes", new_group)
       .then(() => {
         alert("Adding bus route Success");
       })

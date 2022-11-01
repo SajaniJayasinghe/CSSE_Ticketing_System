@@ -142,7 +142,7 @@ export default class BusDetails extends Component {
         </div>
         <br />
         <br />
-        <br />
+        <br /> <br /> 
         <Footer />
       </div>
     );
