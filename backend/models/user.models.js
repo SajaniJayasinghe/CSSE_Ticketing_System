@@ -79,6 +79,7 @@
 
 const mongoose = require("mongoose");
 
+
 const userSchema = new mongoose.Schema(
   {
     firstName: {
@@ -151,7 +152,7 @@ const userSchema = new mongoose.Schema(
       required: true,
     },
     //inspector
-    busID: {
+    busNumber: {
       type: String,
       trim: true,
     },

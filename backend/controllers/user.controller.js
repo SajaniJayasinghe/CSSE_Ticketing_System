@@ -136,7 +136,7 @@ const UserRegister = async (req, res) => {
       userExpDate,
       route,
       role,
-      busID,
+      busNumber,
     } = req.body;
     const user = await User.findOne({ email: email });
 
@@ -273,7 +273,7 @@ const UserRegister = async (req, res) => {
           nic: nic,
           password: hashedPassword,
           route: route,
-          busID: busID,
+          busNumber: busNumber,
           role: role,
         };
         const newInspector = await User.create(data);

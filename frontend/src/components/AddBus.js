@@ -215,7 +215,7 @@ export default function AddBus() {
                       >
                         5. Routes Number 
                       </div>
-                      <input
+                      <select
                         type="number"
                         class="form-control"
                         name="route"
@@ -224,7 +224,19 @@ export default function AddBus() {
                           setroute(e.target.value);
                         }}
                         required
-                      />
+                      >
+                        <option value="">Select Root Number</option>
+                        <option value="177">177</option>
+                        <option value="156">156</option>
+                        <option value="170">170</option>
+                        <option value="356">356</option>
+                        <option value="253">253</option>
+                        <option value="245">245</option>
+                        <option value="255">255</option>
+                        <option value="245">245</option>
+                        <option value="142">142</option>
+                        <option value="190">190</option>
+                      </select>
                     </div>
                     <div
                       style={{
@@ -261,7 +273,8 @@ export default function AddBus() {
                       </select>
                     </div>
                     <br />
-                    <Button
+                  </div>
+                  <Button
                       variant="contained"
                       className="w-10"
                       style={{
@@ -292,7 +305,6 @@ export default function AddBus() {
                     >
                       CANCEL
                     </Button>
-                  </div>
                 </div>
               </div>
             </form>

@@ -33,7 +33,7 @@ export default class AdminNavBar extends Component {
         <img
           style={{ marginLeft: 25, marginTop: -60 }}
           src="https://res.cloudinary.com/nibmsa/image/upload/v1667199794/Screenshot_2022-10-31_at_12.32.06-removebg-preview_y9b5er.png"
-          width="150px"
+          width="120px"
           height="110"
           className="d-inline-block align-top"
           alt=""

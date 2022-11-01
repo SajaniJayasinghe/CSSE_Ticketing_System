@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const timetableSchema = new mongoose.Schema({
-  busID: {
+  busNumber: {
     type: String,
     required: true,
   },
@@ -22,12 +22,23 @@ const timetableSchema = new mongoose.Schema({
     required: false,
     trim: true,
   },
+  departureTime: {
+    type: String,
+    required: true,
+  },
+  destinationTime: {
+    type: String,
+    required: true,
+  },
   busstops: [
     {
-      busStopName: { type: String, trim: true },
-      stoptime: { type: String, trim: true },
+      busStopName: { 
+        type: String, 
+        trim: true 
+      },
     },
   ],
 });
+
 const timetable = mongoose.model("timetable", timetableSchema);
 module.exports = timetable;
