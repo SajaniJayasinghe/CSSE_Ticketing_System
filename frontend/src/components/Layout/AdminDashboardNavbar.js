@@ -14,7 +14,7 @@ export default class AdminDashboardNavbar extends Component {
         ></img>
         <nav
           class="navbar navbar-expand-lg "
-          style={{ backgroundColor: "#033E3E" }}
+          style={{ backgroundColor: "#A0CFEC" }}
         >
           <div class="container">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -22,8 +22,8 @@ export default class AdminDashboardNavbar extends Component {
                 <li>
                   <img
                     style={{ marginLeft: -50 }}
-                    src="https://res.cloudinary.com/nibmsa/image/upload/v1667199160/Screenshot_2022-10-31_at_12.21.28-removebg-preview_hf7bkn.png"
-                    width="300px"
+                    src="https://res.cloudinary.com/nibmsa/image/upload/v1667311443/Screenshot_2022-11-01_at_19.32.42-removebg-preview_lbhdzz.png"
+                    width="330px"
                     height="50"
                     className="d-inline-block align-top"
                     alt=""
@@ -33,13 +33,13 @@ export default class AdminDashboardNavbar extends Component {
                   <a
                     class="nav-link"
                     aria-current="page"
-                    href="#"
+                    href="/busDetails"
                     style={{
-                      color: "white",
+                      color: "black",
                       fontFamily: "times new roman",
                       fontSize: 20,
-                      marginLeft: 200,
-                      marginRight: 20,
+                      marginLeft: 250,
+                      marginRight: 40,
                     }}
                   >
                     <b>Home</b>
@@ -52,11 +52,11 @@ export default class AdminDashboardNavbar extends Component {
                     aria-current="page"
                     href="#"
                     style={{
-                      color: "white",
+                      color: "black",
                       fontFamily: "times new roman",
                       fontSize: 20,
                       marginLeft: 30,
-                      marginRight: 20,
+                      marginRight: 40,
                     }}
                   >
                     <b>About</b>
@@ -69,11 +69,11 @@ export default class AdminDashboardNavbar extends Component {
                     aria-current="page"
                     href="#"
                     style={{
-                      color: "white",
+                      color: "black",
                       fontFamily: "times new roman",
                       fontSize: 20,
-                      marginLeft: 20,
-                      marginRight: 30,
+                      marginLeft: 30,
+                      marginRight: 40,
                     }}
                   >
                     <b>Contact</b>
@@ -84,32 +84,16 @@ export default class AdminDashboardNavbar extends Component {
                   <a
                     class="nav-link"
                     aria-current="page"
-                    href="#"
+                    href="/busRoutes"
                     style={{
-                      color: "white",
+                      color: "black",
                       fontFamily: "times new roman",
                       fontSize: 20,
 
-                      marginRight: 30,
+                      marginRight: 20,
                     }}
                   >
                     <b>Routes</b>
-                  </a>
-                </li>
-
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    aria-current="page"
-                    href="/busRoutes"
-                    style={{
-                      color: "white",
-                      fontFamily: "times new roman",
-                      fontSize: 20,
-                      marginLeft: 30,
-                    }}
-                  >
-                    <b>Time Table</b>
                   </a>
                 </li>
                 <li class="nav-item">
@@ -118,10 +102,10 @@ export default class AdminDashboardNavbar extends Component {
                     aria-current="page"
                     href="/inspectorsignup"
                     style={{
-                      color: "white",
+                      color: "black",
                       fontFamily: "times new roman",
                       fontSize: 20,
-                      marginLeft: 35,
+                      marginLeft: 55,
                     }}
                   >
                     <b>Inspectors Registration</b>

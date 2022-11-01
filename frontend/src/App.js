@@ -8,8 +8,8 @@ import BusDetails from "./components/BusDetails";
 import BusUpdate from "./components/BusUpdate";
 import AddBusRoutes from "./components/busRoute/addBusRoutes";
 import BusRouteDetails from "./components/busRoute/getBusRoutes";
-import AdminDashboardNavbar from "./components/Layout/AdminDashboardNavbar";
 import InspectorSignUp from "./components/InspectorSignUp";
+import UpdateBusRoutes from "./components/busRoute/UpdateBusRoutes";
 
 export default class App extends Component {
   render() {
@@ -18,10 +18,13 @@ export default class App extends Component {
         <Routes>
           <Route path="/" element={<LoadingPage />} />
           <Route path="/adminlogin" element={<AdminLogin />} />
-          <Route path="/admindashboard" element={<AdminDashboardNavbar />} />
           <Route path="/addbus" element={<AddBus />} />
           <Route path="/busDetails" element={<BusDetails />} />
           <Route path="/updatebus/:busNumberPlate" element={<BusUpdate />} />
+          <Route path="/busRoutes/:busNumberPlate" element={<Apps />} />
+          <Route path="/busRoutes" element={<BusRouteDetails />} />
+          <Route path="/inspectorsignup" element={<InspectorSignUp/>} />
+          <Route path="/updatebusRoutes/:id" element={<UpdateBusRoutes/>} />
           <Route path="/busRoutes/:busNumberPlate" element={<AddBusRoutes />} />
           <Route path="/busRoutes" element={<BusRouteDetails />} />
           <Route path="/inspectorsignup" element={<InspectorSignUp />} />

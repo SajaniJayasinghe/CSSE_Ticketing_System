@@ -42,7 +42,7 @@ const GetAllBuseRoutes = async (req, res) => {
   });
 };
 
-// //get one bus route
+//get one bus route
 const GetOneBusRoute = async (req, res) => {
   let id = req.params.id;
   timetable.findById(id, (err, busRoutes) => {
@@ -100,4 +100,5 @@ module.exports = {
   GetOneBusRoute,
   UpdateBusRoute,
   DeleteBusRoutes,
+
 };

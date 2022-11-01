@@ -17,7 +17,7 @@ export default class footer extends Component {
               <div class="row">
                 <div class="col-md-3 item">
                   <img
-                    src="https://res.cloudinary.com/nibmsa/image/upload/v1667212066/Screenshot_2022-10-31_at_15.56.19-removebg-preview_noj4rk.png"
+                     src="https://res.cloudinary.com/nibmsa/image/upload/v1667199794/Screenshot_2022-10-31_at_12.32.06-removebg-preview_y9b5er.png"
                     width="90px"
                     height="80"
                     className="d-inline-block align-top"
@@ -72,10 +72,10 @@ export default class footer extends Component {
                   <h3 style={{ fontSize: "20px", marginLeft: 20 }}>Policies</h3>
                   <ul>
                     <li>
-                      <Button color="white">
+                      <Button color="black">
                         <DoubleArrowIcon
                           style={{
-                            color: "white",
+                            color: "black",
                             fontSize: 20,
                             marginLeft: -20,
                           }}
@@ -86,10 +86,10 @@ export default class footer extends Component {
                       </a>
                     </li>
                     <li>
-                      <Button color="white">
+                      <Button color="black">
                         <DoubleArrowIcon
                           style={{
-                            color: "white",
+                            color: "black",
                             fontSize: 20,
                             marginLeft: -20,
                           }}
@@ -100,10 +100,10 @@ export default class footer extends Component {
                       </a>
                     </li>
                     <li>
-                      <Button color="white">
+                      <Button color="black">
                         <DoubleArrowIcon
                           style={{
-                            color: "white",
+                            color: "black",
                             fontSize: 20,
                             marginLeft: -20,
                           }}
@@ -114,10 +114,10 @@ export default class footer extends Component {
                       </a>
                     </li>
                     <li>
-                      <Button color="white">
+                      <Button color="black">
                         <DoubleArrowIcon
                           style={{
-                            color: "white",
+                            color: "black",
                             fontSize: 20,
                             marginLeft: -20,
                           }}
@@ -138,34 +138,34 @@ export default class footer extends Component {
                     Contact Information
                   </h3>
                   <ul>
-                    <Button color="white">
+                    <Button color="black">
                       <LocationOnIcon
                         style={{
-                          color: "white",
+                          color: "black",
                           fontSize: 20,
                         }}
                       />
                     </Button>
-                    <a style={{ color: "white" }}>
+                    <a style={{ color: "black" }}>
                       101/1 New Kandy Road, Malabe
                     </a>
                     <br />
                     <Button color="white">
-                      <LocalPhoneIcon style={{ color: "white", ontSize: 20 }} />
+                      <LocalPhoneIcon style={{ color: "black", ontSize: 20 }} />
                     </Button>
-                    <a style={{ color: "white" }}>
-                      Tel No : +94112342310 | +94712345318
+                    <a style={{ color: "black" }}>
+                     <b> Tel No : +94112342310 | +94712345318</b>
                     </a>{" "}
                     <br />
-                    <Button color="white">
+                    <Button color="black">
                       <DraftsIcon
                         style={{
-                          color: "white",
+                          color: "black",
                           fontSize: 20,
                         }}
                       />
                     </Button>
-                    <a style={{ color: "white" }}>
+                    <a style={{ color: "black" }}>
                       Email : smartlinetravels@gmail.com
                     </a>
                   </ul>
@@ -179,20 +179,20 @@ export default class footer extends Component {
                     Useful Links
                   </h3>
                   <ul>
-                    <Button color="white">
+                    <Button color="black">
                       <DoubleArrowIcon
                         style={{
-                          color: "white",
+                          color: "black",
                           fontSize: 20,
                         }}
                       />
                     </Button>
                     <a style={{ fontSize: "16px" }}>About Us</a>
                     <br />
-                    <Button color="white">
+                    <Button color="black">
                       <DoubleArrowIcon
                         style={{
-                          color: "white",
+                          color: "black",
                           fontSize: 20,
                         }}
                       />

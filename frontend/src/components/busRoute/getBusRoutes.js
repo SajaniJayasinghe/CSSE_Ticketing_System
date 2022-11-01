@@ -55,7 +55,7 @@ export default class BusDetails extends Component {
 
             <table class="table">
               <thead>
-                <tr bgcolor="#B0E0E6">
+                <tr bgcolor="#98AFC7">
                   <th>
                     <font color="black">No</font>
                   </th>
@@ -118,7 +118,7 @@ export default class BusDetails extends Component {
                         aria-label="edit"
                         color="primary"
                         size="small"
-                        href={`/updatebusroutes/${bus._id}`}
+                        href={`/updatebusRoutes/${bus._id}`}
                       >
                         <EditIcon
                           fontSize="small"
@@ -142,7 +142,7 @@ export default class BusDetails extends Component {
         </div>
         <br />
         <br />
-        <br />
+        <br /> <br /> 
         <Footer />
       </div>
     );

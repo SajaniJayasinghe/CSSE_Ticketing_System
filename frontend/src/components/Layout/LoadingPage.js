@@ -23,7 +23,6 @@ export default class LoadingPage extends Component {
             </div>
           </div>
         </div>
-
         <div class="row row-cols-1 row-cols-md-3 g-4">
           <div
             class="col"
@@ -38,7 +37,7 @@ export default class LoadingPage extends Component {
               <div
                 class="card-body"
                 style={{
-                  background: "#92C7C7",
+                  background: "#DBE9FA",
                   textAlign: "justify",
                   width: 960,
                   marginTop: 10,
