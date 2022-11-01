@@ -5,10 +5,9 @@ const Bus = require("../models/bus.models");
 const addBusRoute = async (req, res) => {
   let newBusRoute = new timetable(req.body);
 
-  const isBusCheck = await timetable.find({ 
-    busNumber: newBusRoute.busNumber 
-});
-  if (isBusCheck.length == 0) {
+  const busNumber = await timetable.find({ busNumber: newBusRoute.busNumber });
+
+  if (busNumber.length == 0) {
     newBusRoute.save((err) => {
       if (err) {
         return res.status(400).json({
