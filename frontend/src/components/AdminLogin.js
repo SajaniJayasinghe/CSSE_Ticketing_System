@@ -58,7 +58,7 @@ export default class AdminLogin extends Component {
           <div
             style={{
               width: 800,
-              background: "#CFECEC",
+              background: "#C9DFEC",
               height: 440,
               borderRadius: "20px",
             }}
@@ -128,7 +128,7 @@ export default class AdminLogin extends Component {
                       <Button
                         type="submit"
                         style={{
-                          background: "#46C7C7",
+                          background: "#357EC7",
                           width: 45 + "%",
                           marginLeft: 148,
                           height: 20 + "%",

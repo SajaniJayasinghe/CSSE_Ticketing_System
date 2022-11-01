@@ -75,7 +75,7 @@ export default class BusDetails extends Component {
             <Button
               variant="contained"
               style={{
-                background: "#7BCCB5",
+                background: "#728FCE",
                 width: 10 + "%",
                 color: "black",
                 borderRadius: 20,
@@ -101,7 +101,7 @@ export default class BusDetails extends Component {
 
             <table class="table">
               <thead>
-                <tr bgcolor="#B0E0E6">
+                <tr bgcolor="#98AFC7">
                   <th>
                     <font color="black">No</font>
                   </th>

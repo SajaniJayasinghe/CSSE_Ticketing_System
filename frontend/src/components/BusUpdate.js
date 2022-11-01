@@ -65,7 +65,7 @@ export default function BusUpdate() {
         <div
           style={{
             width: 1000,
-            background: "#B0E0E6",
+            background: "#DBE9FA",
             height: 500,
             backgroundSize: "1000px ",
           }}
@@ -298,16 +298,16 @@ export default function BusUpdate() {
                       variant="contained"
                       className="w-10"
                       style={{
-                        background: "#033E3E",
+                        background: "#357EC7",
                         width: 23 + "%",
-                        color: "white",
+                        color: "black",
                         borderRadius: 20,
                         marginLeft: 200,
                       }}
                       disableElevation
                       type="submit"
                     >
-                      UPDATE
+                    <b>UPDATE</b>
                     </Button>
                     &nbsp; &nbsp;
                     <Button
@@ -315,15 +315,15 @@ export default function BusUpdate() {
                       href="/busDetails"
                       className="w-10"
                       style={{
-                        background: "#033E3E",
+                        background: "#357EC7",
                         width: 23 + "%",
-                        color: "white",
+                        color: "black",
                         borderRadius: 20,
                       }}
                       disableElevation
                       type="submit"
                     >
-                      CANCEL
+                    <b>CANCEL</b>
                     </Button>
                   </div>
                 </div>

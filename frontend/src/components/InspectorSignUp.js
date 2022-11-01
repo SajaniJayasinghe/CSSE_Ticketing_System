@@ -66,7 +66,7 @@ export default function InspectorSignUp() {
         <div
           style={{
             width: 1000,
-            background: "#CFECEC",
+            background: "#C9DFEC",
             height: 820,
             borderRadius: "20px",
           }}
@@ -350,7 +350,7 @@ export default function InspectorSignUp() {
                 <Button
                   type="submit"
                   style={{
-                    background: "#46C7C7",
+                    background: "#357EC7",
                     width: 13 + "%",
                     marginTop: -1,
                     marginLeft: 190,
@@ -366,7 +366,7 @@ export default function InspectorSignUp() {
                 <Button
                   href="/busDetails"
                   style={{
-                    background: "#46C7C7",
+                    background: "#357EC7",
                     width: 13 + "%",
                     marginTop: -1,
                     marginRight: 50,
@@ -388,7 +388,7 @@ export default function InspectorSignUp() {
           src="https://stories.freepiklabs.com/storage/15542/Travelers-01.svg"
           style={{
             width: 750,
-            marginLeft: -195,
+            marginLeft:-100,
             marginRight: 200,
             marginTop: -750,
           }}
