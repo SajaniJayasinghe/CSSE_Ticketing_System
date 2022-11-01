@@ -39,7 +39,7 @@ export default class AdminDashboardNavbar extends Component {
                       fontFamily: "times new roman",
                       fontSize: 20,
                       marginLeft: 250,
-                      marginRight: 30,
+                      marginRight: 40,
                     }}
                   >
                     <b>Home</b>
@@ -56,7 +56,7 @@ export default class AdminDashboardNavbar extends Component {
                       fontFamily: "times new roman",
                       fontSize: 20,
                       marginLeft: 30,
-                      marginRight: 30,
+                      marginRight: 40,
                     }}
                   >
                     <b>About</b>
@@ -90,7 +90,7 @@ export default class AdminDashboardNavbar extends Component {
                       fontFamily: "times new roman",
                       fontSize: 20,
 
-                      marginRight: 40,
+                      marginRight: 20,
                     }}
                   >
                     <b>Routes</b>

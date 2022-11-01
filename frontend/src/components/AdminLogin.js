@@ -11,7 +11,7 @@ export default class AdminLogin extends Component {
     this.handleClose = this.handleClose.bind(this);
 
     this.state = {
-      username: "",
+      email: "",
       password: "",
       token: "",
       open: false,
@@ -20,11 +20,11 @@ export default class AdminLogin extends Component {
   async AdminLoginSubmit(e) {
     e.preventDefault();
     const userData = {
-      username: this.state.username,
+      email: this.state.email,
       password: this.state.password,
     };
     await axios
-      .post("http://localhost:8080/api/admin/adminlogin", userData)
+      .post("http://localhost:8080/api/user/login", userData)
       .then((res) => {
         this.setState({
           token: res.data.token,
@@ -58,7 +58,7 @@ export default class AdminLogin extends Component {
           <div
             style={{
               width: 800,
-              background: "#C9DFEC",
+              background: "#DBE9FA",
               height: 440,
               borderRadius: "20px",
             }}
@@ -73,7 +73,9 @@ export default class AdminLogin extends Component {
                     />
                     <br />
                     <br />
-                    <h2 style={{ marginLeft: 50 ,fontFamily:"times new roman"}}>
+                    <h2
+                      style={{ marginLeft: 50, fontFamily: "times new roman" }}
+                    >
                       &nbsp;&nbsp;&nbsp;&nbsp;
                       <b>ADMIN&nbsp;&nbsp;LOGIN</b>
                     </h2>
@@ -89,7 +91,7 @@ export default class AdminLogin extends Component {
                           >
                             {" "}
                             <i className="fa fa-lock"> &nbsp;&nbsp;</i>
-                            USER NAME{" "}
+                            EMAIL
                           </span>
                           <input
                             type="text"
@@ -97,7 +99,7 @@ export default class AdminLogin extends Component {
                             placeholder="Enter Your User Name"
                             class="form-control "
                             onChange={(e) =>
-                              this.setState({ username: e.target.value })
+                              this.setState({ email: e.target.value })
                             }
                             required
                           />
