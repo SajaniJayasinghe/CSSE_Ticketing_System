@@ -6,7 +6,7 @@ const {
   GetAllBuseRoutes,
   GetOneBusRoute,
   UpdateBusRoute,
-  DeleteBusRoutes
+  DeleteBusRoutes,
 } = require("../controllers/bus.timetable.controller");
 
 BusRouteRouter.post("/addbusroutes", addBusRoute);

@@ -58,7 +58,7 @@ export default class AdminLogin extends Component {
           <div
             style={{
               width: 800,
-              background: "#CFECEC",
+              background: "#DBE9FA",
               height: 440,
               borderRadius: "20px",
             }}
@@ -91,7 +91,7 @@ export default class AdminLogin extends Component {
                           >
                             {" "}
                             <i className="fa fa-lock"> &nbsp;&nbsp;</i>
-                            EMAIL{" "}
+                            EMAIL
                           </span>
                           <input
                             type="text"
@@ -130,7 +130,7 @@ export default class AdminLogin extends Component {
                       <Button
                         type="submit"
                         style={{
-                          background: "#46C7C7",
+                          background: "#357EC7",
                           width: 45 + "%",
                           marginLeft: 148,
                           height: 20 + "%",

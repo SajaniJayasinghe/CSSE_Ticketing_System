@@ -44,7 +44,7 @@ export default function AddBus() {
         <div
           style={{
             width: 1000,
-            background: "#B0E0E6",
+            background: "#DBE9FA",
             height: 500,
             backgroundSize: "1000px ",
           }}
@@ -278,7 +278,7 @@ export default function AddBus() {
                       variant="contained"
                       className="w-10"
                       style={{
-                        background: "#033E3E",
+                        background: "#357EC7",
                         width: 23 + "%",
                         color: "white",
                         borderRadius: 20,
@@ -287,7 +287,7 @@ export default function AddBus() {
                       disableElevation
                       type="submit"
                     >
-                      CREATE
+                     <b> CREATE</b>
                     </Button>
                     &nbsp; &nbsp;
                     <Button
@@ -295,7 +295,7 @@ export default function AddBus() {
                       href="/busDetails"
                       className="w-10"
                       style={{
-                        background: "#033E3E",
+                        background: "#357EC7",
                         width: 23 + "%",
                         color: "white",
                         borderRadius: 20,
@@ -303,7 +303,7 @@ export default function AddBus() {
                       disableElevation
                       type="submit"
                     >
-                      CANCEL
+                    <b>CANCEL</b>
                     </Button>
                 </div>
               </div>

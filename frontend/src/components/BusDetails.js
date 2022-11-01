@@ -9,7 +9,9 @@ import IconButton from "@material-ui/core/IconButton";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditIcon from "@material-ui/icons/Edit";
 import DescriptionIcon from "@mui/icons-material/Description";
-import { saveAs } from "file-saver";
+import { saveAs } from 'file-saver';
+import ControlPointIcon from '@mui/icons-material/ControlPoint';
+
 
 export default class BusDetails extends Component {
   constructor(props) {
@@ -75,7 +77,7 @@ export default class BusDetails extends Component {
             <Button
               variant="contained"
               style={{
-                background: "#7BCCB5",
+                background: "#728FCE",
                 width: 10 + "%",
                 color: "black",
                 borderRadius: 20,
@@ -101,7 +103,7 @@ export default class BusDetails extends Component {
 
             <table class="table">
               <thead>
-                <tr bgcolor="#B0E0E6">
+                <tr bgcolor="#98AFC7">
                   <th>
                     <font color="black">No</font>
                   </th>
@@ -127,6 +129,9 @@ export default class BusDetails extends Component {
                     <font color="black">Date</font>
                   </th>
                   <th>
+                    <font color="black">Add Routes</font>
+                  </th>
+                  <th>
                     <font color="black">Action</font>
                   </th>
                 </tr>
@@ -143,6 +148,20 @@ export default class BusDetails extends Component {
                     <td>{bus.seats}</td>
 
                     <td>{moment(bus.timestamps).format("DD/MM/YYYY")}</td>
+                    <td>
+                      <IconButton
+                        aria-label="edit"
+                        color="primary"
+                        size="small"
+                        style={{ marginLeft: 50 }}
+                        href={`/busRoutes/${bus._id}`}
+                      >
+                        <ControlPointIcon
+                          fontSize="small"
+                          style={{ color: "#151B54" }}
+                        />
+                      </IconButton>
+                    </td>
                     <td>
                       <IconButton
                         aria-label="edit"
