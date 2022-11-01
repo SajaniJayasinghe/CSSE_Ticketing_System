@@ -69,6 +69,7 @@ function AddBusRoutes() {
       .post("http://localhost:8080/api/busRoute/addbusroutes", new_group)
       .then(() => {
         alert("Adding bus route Success");
+        window.location.href = "/busRoutes";
       })
       .catch((err) => {
         alert("Adding bus route unsuccess", err);
@@ -111,7 +112,7 @@ function AddBusRoutes() {
           class="form-control"
           name="departureTime"
           onChange={(e) => {
-            setdeparture(e.target.value);
+            setDepartureTime(e.target.value);
           }}
         />
         <input
@@ -130,7 +131,7 @@ function AddBusRoutes() {
           class="form-control"
           name="destinationTime"
           onChange={(e) => {
-            setdestination(e.target.value);
+            setDestinationTime(e.target.value);
           }}
         />
         <input
@@ -147,14 +148,14 @@ function AddBusRoutes() {
           type="text"
           value={inspectorName}
           class="form-control"
-          name="route"
+          name="inspectorName"
           onChange={(e) => {
             setInspectorName(e.target.value);
           }}
         />
       </div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="mutiple-select-label">Select Bus Route</InputLabel>
+        <InputLabel id="mutiple-select-label">Select Bus Stops</InputLabel>
         <Select
           labelId="mutiple-select-label"
           multiple

@@ -4,8 +4,9 @@ const Bus = require("../models/bus.models");
 //add new buse route
 const addBusRoute = async (req, res) => {
   let newBusRoute = new timetable(req.body);
-  const busNumber = await timetable.find({ 
-    busNumber: newBusRoute.busNumber });
+  const busNumber = await timetable.find({
+    busNumber: newBusRoute.busNumber,
+  });
 
   if (busNumber.length == 0) {
     newBusRoute.save((err) => {
@@ -14,6 +15,7 @@ const addBusRoute = async (req, res) => {
           error: err,
         });
       }
+
       return res.status(200).json({
         success: "New Bus Route Added Successfully !!",
       });
@@ -78,9 +80,7 @@ const UpdateBusRoute = (req, res) => {
 
 // //delete bus rotes
 const DeleteBusRoutes = (req, res) => {
-  timetable.findByIdAndRemove(req.params.id).exec((
-    err, deletebusroutes
-    ) => {
+  timetable.findByIdAndRemove(req.params.id).exec((err, deletebusroutes) => {
     if (err)
       return res.status(400).json({
         message: "Deletion Unsuccessfull",
@@ -94,12 +94,11 @@ const DeleteBusRoutes = (req, res) => {
   });
 };
 
-
 module.exports = {
   addBusRoute,
   GetAllBuseRoutes,
   GetOneBusRoute,
   UpdateBusRoute,
   DeleteBusRoutes,
-  
+
 };

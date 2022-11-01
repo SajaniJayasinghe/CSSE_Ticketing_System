@@ -28,7 +28,6 @@ export default class App extends Component {
           <Route path="/busRoutes/:busNumberPlate" element={<AddBusRoutes />} />
           <Route path="/busRoutes" element={<BusRouteDetails />} />
           <Route path="/inspectorsignup" element={<InspectorSignUp />} />
-          <Route path="/inspectorsignup" element={<InspectorSignUp />} />
         </Routes>
       </Router>
     );
