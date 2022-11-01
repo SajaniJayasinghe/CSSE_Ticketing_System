@@ -13,8 +13,8 @@ export default function InspectorSignUp() {
   const [password, setpassword] = useState("");
   const [confirmpassword, setconfirmpassword] = useState("");
   const [route, setroute] = useState("");
-  const [busNumber, setbusNumber] = useState("");
   const [role, setrole] = useState("");
+  const [busNumber, setbusNumber] = useState("");
 
   const sendData = async (e) => {
     e.preventDefault();
@@ -109,6 +109,7 @@ export default function InspectorSignUp() {
                           <div className="col-md-10">
                             <input
                               type="text"
+                              placeholder="Bus Number"
                               className="form-control"
                               onChange={(e) => setbusNumber(e.target.value)}
                               required
@@ -174,11 +175,12 @@ export default function InspectorSignUp() {
                     </span>
                     <div className="col-md-11">
                       <select
-                        type="text"
                         className="form-control"
+                        name="seat"
+                        class="form-control"
                         onChange={(e) => setrole(e.target.value)}
                         required
-                      > 
+                      >
                         <option value="">Select</option>
                         <option value="Inspector">Inspector</option>
                       </select>
@@ -200,6 +202,7 @@ export default function InspectorSignUp() {
                     <div className="col-md-11">
                       <input
                         type="text"
+                        placeholder="Enter First Name"
                         className="form-control"
                         onChange={(e) => setfirstName(e.target.value)}
                         required
@@ -221,6 +224,7 @@ export default function InspectorSignUp() {
                     <div className="col-md-11">
                       <input
                         type="text"
+                        placeholder="Enter Last Name"
                         className="form-control"
                         onChange={(e) => setlastName(e.target.value)}
                         required
@@ -243,6 +247,7 @@ export default function InspectorSignUp() {
                       <input
                         type="text"
                         className="form-control"
+                        placeholder="Enter Email Address"
                         onChange={(e) => setemail(e.target.value)}
                         pattern="(?![.-])((?![.-][.-])[a-zA-Z\d.-]){0,63}[a-zA-Z\d]@((?!-)((?!--)[a-zA-Z\d-]){0,63}[a-zA-Z\d]\.){1,2}([a-zA-Z]{2,14}\.)?[a-zA-Z]{2,14}"
                         required
@@ -264,6 +269,7 @@ export default function InspectorSignUp() {
                     <div className="col-md-11">
                       <input
                         type="text"
+                        placeholder="Enter Phone Number"
                         className="form-control"
                         onChange={(e) => setphoneNo(e.target.value)}
                         pattern="[0-9]{10}"
@@ -286,6 +292,7 @@ export default function InspectorSignUp() {
                     <div className="col-md-11">
                       <input
                         type="text"
+                        placeholder="Enter NIC Number"
                         className="form-control"
                         pattern="^[a-zA-Z0-9]*$"
                         onChange={(e) => setnic(e.target.value)}
@@ -307,6 +314,7 @@ export default function InspectorSignUp() {
                         type="password"
                         className="form-control"
                         data-toggle="tooltip"
+                        placeholder="Enter Password"
                         data-placement="center"
                         title="Your password MUST contain at least 8 charactors, including UPPER-lowercase letters and at least one number and a charactor = 'Sample@523'"
                         pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$"
@@ -328,6 +336,7 @@ export default function InspectorSignUp() {
                       <input
                         type="password"
                         className="form-control"
+                        placeholder="Enter Confirm Password"
                         title="Your password MUST contain at least 8 charactors, including UPPER-lowercase letters and at least one number and a charactor = 'Sample@523'"
                         pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$"
                         onChange={(e) => setconfirmpassword(e.target.value)}

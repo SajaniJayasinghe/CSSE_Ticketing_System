@@ -122,22 +122,6 @@ export default class AdminNavBar extends Component {
                     <b>Routes</b>
                   </a>
                 </li>
-
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    aria-current="page"
-                    href="#"
-                    style={{
-                      color: "white",
-                      fontFamily: "times new roman",
-                      fontSize: 20,
-                      marginLeft: 10,
-                    }}
-                  >
-                    <b>Time Table</b>
-                  </a>
-                </li>
               </ul>
             </div>
           </div>
