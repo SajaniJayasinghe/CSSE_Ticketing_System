@@ -9,7 +9,7 @@ import IconButton from "@material-ui/core/IconButton";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditIcon from "@material-ui/icons/Edit";
 import DescriptionIcon from "@mui/icons-material/Description";
-import { saveAs } from 'file-saver';
+import { saveAs } from "file-saver";
 
 export default class BusDetails extends Component {
   constructor(props) {
@@ -87,14 +87,14 @@ export default class BusDetails extends Component {
               <DirectionsBusIcon /> &nbsp; ADD BUS
             </Button>
             &nbsp;
-              <IconButton size="medium" onClick={this.generateReport}>
-                <DescriptionIcon fontSize="large" style={{ color: "black" }} />
-              </IconButton>
+            <IconButton size="medium" onClick={this.generateReport}>
+              <DescriptionIcon fontSize="large" style={{ color: "black" }} />
+            </IconButton>
           </div>
           <div align="center">
             <h3 style={{ fontFamily: "times new roman", fontSize: "45px" }}>
               <u>
-                <b>Available  Bus  List</b>
+                <b>Available Bus List</b>
               </u>
             </h3>
             <br></br>
@@ -132,7 +132,7 @@ export default class BusDetails extends Component {
                 </tr>
               </thead>
               <tbody>
-              {this.state.bus.map((bus, index) => (
+                {this.state.bus.map((bus, index) => (
                   <tr>
                     <th scope="row">{index + 1}</th>
                     <td>{bus.busNumber}</td>
@@ -141,10 +141,8 @@ export default class BusDetails extends Component {
                     <td>{bus.destination}</td>
                     <td>{bus.route}</td>
                     <td>{bus.seats}</td>
-                    
-                    <td>
-                      {moment(bus.timestamps).format("DD/MM/YYYY")}
-                    </td>
+
+                    <td>{moment(bus.timestamps).format("DD/MM/YYYY")}</td>
                     <td>
                       <IconButton
                         aria-label="edit"
@@ -152,13 +150,16 @@ export default class BusDetails extends Component {
                         size="small"
                         href={`/updatebus/${bus._id}`}
                       >
-                        <EditIcon fontSize="small" style={{ color: "#151B54" }} />
+                        <EditIcon
+                          fontSize="small"
+                          style={{ color: "#151B54" }}
+                        />
                       </IconButton>{" "}
                       &nbsp;&nbsp;
                       <IconButton aria-label="delete" size="small">
                         <DeleteForeverIcon
-                          fontSize="small" 
-                        onClick={() => this.onDelete(bus._id)}
+                          fontSize="small"
+                          onClick={() => this.onDelete(bus._id)}
                           style={{ color: "red" }}
                         />
                       </IconButton>
@@ -168,7 +169,8 @@ export default class BusDetails extends Component {
               </tbody>
             </table>
           </div>
-        </div><br/>
+        </div>
+        <br />
         <Footer />
       </div>
     );
