@@ -182,17 +182,6 @@ export default class BusDetails extends Component {
                           style={{ color: "red" }}
                         />
                       </IconButton>
-                      <IconButton
-                        aria-label="add"
-                        color="primary"
-                        size="small"
-                        href={`/busRoutes/${bus._id}`}
-                      >
-                        <EditIcon
-                          fontSize="small"
-                          style={{ color: "#151B54" }}
-                        />
-                      </IconButton>{" "}
                     </td>
                   </tr>
                 ))}

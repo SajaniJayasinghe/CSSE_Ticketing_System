@@ -105,9 +105,9 @@ export default class BusDetails extends Component {
                         color="primary"
                         size="small"
                         style={{ marginLeft: 50 }}
-                        href="#"
+                        href={`/checkroutes/${bus._id}`}
                       >
-                        <DirectionsBusIcon
+                        <DirectionsBusIcon                      
                           fontSize="small"
                           style={{ color: "#151B54" }}
                         />

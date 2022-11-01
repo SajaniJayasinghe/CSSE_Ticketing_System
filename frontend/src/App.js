@@ -10,6 +10,7 @@ import AddBusRoutes from "./components/busRoute/addBusRoutes";
 import BusRouteDetails from "./components/busRoute/getBusRoutes";
 import InspectorSignUp from "./components/InspectorSignUp";
 import UpdateBusRoutes from "./components/busRoute/UpdateBusRoutes";
+import Checkroutes from "./components/Checkroutes";
 
 export default class App extends Component {
   render() {
@@ -21,13 +22,13 @@ export default class App extends Component {
           <Route path="/addbus" element={<AddBus />} />
           <Route path="/busDetails" element={<BusDetails />} />
           <Route path="/updatebus/:busNumberPlate" element={<BusUpdate />} />
-          <Route path="/busRoutes/:busNumberPlate" element={<Apps />} />
           <Route path="/busRoutes" element={<BusRouteDetails />} />
           <Route path="/inspectorsignup" element={<InspectorSignUp/>} />
           <Route path="/updatebusRoutes/:id" element={<UpdateBusRoutes/>} />
           <Route path="/busRoutes/:busNumberPlate" element={<AddBusRoutes />} />
           <Route path="/busRoutes" element={<BusRouteDetails />} />
           <Route path="/inspectorsignup" element={<InspectorSignUp />} />
+          <Route path="/checkroutes/:id" element={<Checkroutes/>} />
         </Routes>
       </Router>
     );
