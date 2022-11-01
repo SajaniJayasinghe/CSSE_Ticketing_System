@@ -3,16 +3,17 @@ const BusRouteRouter = express.Router();
 
 const {
   addBusRoute,
-  //   addInspector,
-  GetAllBusRoutes,
+  GetAllBuseRoutes,
+  GetOneBusRoute,
   UpdateBusRoute,
-  GetOneBusRoute, 
+  DeleteBusRoutes
 } = require("../controllers/bus.timetable.controller");
 
-BusRouteRouter.post("/addBusRoute", addBusRoute);
-// BusRouteRouter.post("/addBusRoute/:id", addInspector);
-BusRouteRouter.get("/getAllBusRoutes", GetAllBusRoutes);
-BusRouteRouter.put("/updateBusRoute/:id", UpdateBusRoute);
-BusRouteRouter.get("/getOneBusRoute/:id", GetOneBusRoute);
+BusRouteRouter.post("/addbusroutes", addBusRoute);
+BusRouteRouter.get("/allbusroutes", GetAllBuseRoutes);
+BusRouteRouter.get("/getonebusroutes/:id", GetOneBusRoute);
+BusRouteRouter.put("/updatebusroutes/:id", UpdateBusRoute);
+BusRouteRouter.delete("/deletebusroutes/:id", DeleteBusRoutes);
+
 
 module.exports = BusRouteRouter;
