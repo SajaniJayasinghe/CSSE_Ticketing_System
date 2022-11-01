@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-export default class AdminDashboardNavbar extends Component {
+export default class AdminLoginNavBar extends Component {
   render() {
     return (
       <div>
+        <div>
         <img
-          style={{ marginLeft: 25, marginTop: 8 }}
+          style={{ marginLeft: 25, marginTop: 10 }}
           src="https://res.cloudinary.com/nibmsa/image/upload/v1667199794/Screenshot_2022-10-31_at_12.32.06-removebg-preview_y9b5er.png"
           width="120px"
           height="110"
@@ -33,13 +34,13 @@ export default class AdminDashboardNavbar extends Component {
                   <a
                     class="nav-link"
                     aria-current="page"
-                    href="#"
+                    href="/"
                     style={{
                       color: "white",
                       fontFamily: "times new roman",
                       fontSize: 20,
-                      marginLeft: 200,
-                      marginRight: 20,
+                      marginLeft: 400,
+                      marginRight: 30,
                     }}
                   >
                     <b>Home</b>
@@ -56,7 +57,7 @@ export default class AdminDashboardNavbar extends Component {
                       fontFamily: "times new roman",
                       fontSize: 20,
                       marginLeft: 30,
-                      marginRight: 20,
+                      marginRight: 30,
                     }}
                   >
                     <b>About</b>
@@ -72,7 +73,7 @@ export default class AdminDashboardNavbar extends Component {
                       color: "white",
                       fontFamily: "times new roman",
                       fontSize: 20,
-                      marginLeft: 20,
+                      marginLeft: 30,
                       marginRight: 30,
                     }}
                   >
@@ -106,31 +107,18 @@ export default class AdminDashboardNavbar extends Component {
                       color: "white",
                       fontFamily: "times new roman",
                       fontSize: 20,
-                      marginLeft: 30,
+                      marginLeft: 10,
                     }}
                   >
                     <b>Time Table</b>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    aria-current="page"
-                    href="/inspectorsignup"
-                    style={{
-                      color: "white",
-                      fontFamily: "times new roman",
-                      fontSize: 20,
-                      marginLeft: 35,
-                    }}
-                  >
-                    <b>Inspectors Registration</b>
                   </a>
                 </li>
               </ul>
             </div>
           </div>
         </nav>
+      </div>
+
       </div>
     )
   }

@@ -1,12 +1,14 @@
 const timetable = require("../models/bus.timetable.models");
+const Bus = require("../models/bus.models");
 
 //add new buse route
 const addBusRoute = async (req, res) => {
   let newBusRoute = new timetable(req.body);
 
-  const busID = await timetable.find({ busID: newBusRoute.busID });
-
-  if (busID.length == 0) {
+  const isBusCheck = await timetable.find({ 
+    busNumber: newBusRoute.busNumber 
+});
+  if (isBusCheck.length == 0) {
     newBusRoute.save((err) => {
       if (err) {
         return res.status(400).json({
@@ -24,7 +26,7 @@ const addBusRoute = async (req, res) => {
   }
 };
 
-//get all added bus routes
+//get all added buss
 const GetAllBusRoutes = async (req, res) => {
   timetable.find().exec((err, busRoutes) => {
     if (err) {
