@@ -6,7 +6,7 @@ import AdminLogin from "./components/AdminLogin";
 import AddBus from "./components/AddBus";
 import BusDetails from "./components/BusDetails";
 import BusUpdate from "./components/BusUpdate";
-import Apps from "./components/busRoute/addBusRoutes";
+import AddBusRoutes from "./components/busRoute/addBusRoutes";
 import BusRouteDetails from "./components/busRoute/getBusRoutes";
 import InspectorSignUp from "./components/InspectorSignUp";
 import UpdateBusRoutes from "./components/busRoute/UpdateBusRoutes";
@@ -25,6 +25,10 @@ export default class App extends Component {
           <Route path="/busRoutes" element={<BusRouteDetails />} />
           <Route path="/inspectorsignup" element={<InspectorSignUp/>} />
           <Route path="/updatebusRoutes/:id" element={<UpdateBusRoutes/>} />
+          <Route path="/busRoutes/:busNumberPlate" element={<AddBusRoutes />} />
+          <Route path="/busRoutes" element={<BusRouteDetails />} />
+          <Route path="/inspectorsignup" element={<InspectorSignUp />} />
+          <Route path="/inspectorsignup" element={<InspectorSignUp />} />
         </Routes>
       </Router>
     );
