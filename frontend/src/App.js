@@ -9,6 +9,7 @@ import BusUpdate from "./components/BusUpdate";
 import Apps from "./components/busRoute/addBusRoutes";
 import BusRouteDetails from "./components/busRoute/getBusRoutes";
 import AdminDashboardNavbar from "./components/Layout/AdminDashboardNavbar";
+import InspectorSignUp from "./components/InspectorSignUp";
 
 export default class App extends Component {
   render() {
@@ -23,6 +24,7 @@ export default class App extends Component {
           <Route path="/updatebus/:busNumberPlate" element={<BusUpdate />} />
           <Route path="/busRoutes/:id" element={<Apps />} />
           <Route path="/busRoutes" element={<BusRouteDetails />} />
+          <Route path="/inspectorsignup" element={<InspectorSignUp/>} />
         </Routes>
       </Router>
     );

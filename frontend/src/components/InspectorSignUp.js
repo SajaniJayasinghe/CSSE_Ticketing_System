@@ -15,13 +15,6 @@ export default function InspectorSignUp() {
   const [route, setroute] = useState("");
   const [role, setrole] = useState("");
   const [busNumber, setbusNumber] = useState("");
-  const [passportNo, setpassportNo] = useState("");
-  const [country, setcountry] = useState("");
-  const [smartCard, setsmartCard] = useState("");
-  const [totalCredit, settotalCredit] = useState("");
-  const [userExpDate, setuserExpDate] = useState("");
-  const [accountStatus, setaccountStatus] = useState("");
-
 
   const sendData = async (e) => {
     e.preventDefault();
@@ -38,12 +31,6 @@ export default function InspectorSignUp() {
       role: role,
       route: route,
       busNumber: busNumber,
-      passportNo:passportNo,
-      country:country,
-      smartCard:smartCard,
-      totalCredit:totalCredit,
-      userExpDate:userExpDate,
-      accountStatus:accountStatus
     };
     if (password == confirmpassword) {
       console.log(newInspector);
@@ -69,12 +56,6 @@ export default function InspectorSignUp() {
     setrole("");
     setroute("");
     setbusNumber("");
-    setpassportNo("");
-    setcountry("");
-    setsmartCard("");
-    settotalCredit("");
-    setuserExpDate("");
-    setaccountStatus("");
   };
 
   return (
@@ -193,7 +174,7 @@ export default function InspectorSignUp() {
                       Role
                     </span>
                     <div className="col-md-11">
-                    <select
+                      <select
                         className="form-control"
                         name="seat"
                         class="form-control"

@@ -1,12 +1,11 @@
 const Bus = require("../models/bus.models");
 
-//ad new buses
+//add new buses
 const BusRegister = async (req, res) => {
   let newBus = new Bus(req.body);
   const isBusCheck = await Bus.find({
     busNumber: newBus.busNumber,
   });
-
   if (isBusCheck.length == 0) {
     newBus.save((err) => {
       if (err) {

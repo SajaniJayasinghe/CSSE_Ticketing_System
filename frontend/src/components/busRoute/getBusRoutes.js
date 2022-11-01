@@ -2,61 +2,53 @@ import React, { Component } from "react";
 import axios from "axios";
 import AdminDashboardNavbar from "../Layout/AdminDashboardNavbar";
 import Footer from "../Layout/Footer";
-import Button from "@material-ui/core/Button";
-import DirectionsBusIcon from "@mui/icons-material/DirectionsBus";
 import IconButton from "@material-ui/core/IconButton";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditIcon from "@material-ui/icons/Edit";
+import DirectionsBusIcon from "@mui/icons-material/DirectionsBus";
 
-export default class BusRouteDetails extends Component {
+export default class BusDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      busRoutes: [],
+      bus: [],
     };
   }
   componentDidMount() {
     this.retrieveBus();
   }
   retrieveBus() {
-    axios
-      .get("http://localhost:8080/api/busRoute/getAllBusRoutes")
-      .then((res) => {
-        if (res.data.success) {
-          this.setState({
-            busRoutes: res.data.existingBusRoutes,
-          });
-          console.log("busRoutes", this.state.busRoutes);
-        }
-      });
+    axios.get("http://localhost:8080/api/busRoute/allbusroutes").then((res) => {
+      if (res.data.success) {
+        this.setState({
+          bus: res.data.existingBusRoutes,
+        });
+        console.log(this.state.bus);
+      }
+    });
   }
+
+  //delete bus
+  onDelete = (id) => {
+    if (window.confirm("Are you sure you wish to delete this bus route?")) {
+      axios
+        .delete(`http://localhost:8080/api/busRoute/deletebusroutes/${id}`)
+        .then((res) => {
+          this.retrieveBus();
+        });
+    }
+  };
 
   render() {
     return (
       <div>
         <AdminDashboardNavbar />
-        <br />
+        <br /> <br />
         <div className="container">
-          <div align="right">
-            <Button
-              variant="contained"
-              style={{
-                background: "#7BCCB5",
-                width: 10 + "%",
-                color: "black",
-                borderRadius: 20,
-              }}
-              href="/addbusRoute"
-              disableElevation
-              type="submit"
-            >
-              <DirectionsBusIcon /> &nbsp; ADD BUS ROUTE
-            </Button>
-            &nbsp;
-          </div>
           <div align="center">
             <h3 style={{ fontFamily: "times new roman", fontSize: "45px" }}>
               <u>
-                <b>Bus Routes</b>
+                <b>Available Bus Routes</b>
               </u>
             </h3>
             <br></br>
@@ -71,16 +63,25 @@ export default class BusRouteDetails extends Component {
                     <font color="black">Bus Number</font>
                   </th>
                   <th>
+                    <font color="black">Routes</font>
+                  </th>
+                  <th>
+                    <font color="black">Inspector Name</font>
+                  </th>
+                  <th>
                     <font color="black">Departure</font>
+                  </th>
+                  <th>
+                    <font color="black">Departure Time</font>
                   </th>
                   <th>
                     <font color="black">Destination</font>
                   </th>
                   <th>
-                    <font color="black">Route Number</font>
+                    <font color="black">Destination Time</font>
                   </th>
                   <th>
-                    <font color="black">Bus Stops</font>
+                    <font color="black">Check Routes</font>
                   </th>
                   <th>
                     <font color="black">Action</font>
@@ -88,27 +89,50 @@ export default class BusRouteDetails extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.state.busRoutes.map((busRoutes, index) => (
+                {this.state.bus.map((bus, index) => (
                   <tr>
                     <th scope="row">{index + 1}</th>
-                    <td>{busRoutes.busNumber}</td>
-                    <td>{busRoutes.departure}</td>
-                    <td>{busRoutes.destination}</td>
-                    <td>{busRoutes.route}</td>
-                    <td>{busRoutes.busstops}</td>
-
+                    <td>{bus.busNumber}</td>
+                    <td>{bus.route}</td>
+                    <td>{bus.inspectorName}</td>
+                    <td>{bus.departure}</td>
+                    <td>{bus.departureTime}</td>
+                    <td>{bus.destination}</td>
+                    <td>{bus.destinationTime}</td>
                     <td>
                       <IconButton
                         aria-label="edit"
                         color="primary"
                         size="small"
-                        href={`/busRoutes/${busRoutes._id}`}
+                        style={{ marginLeft: 50 }}
+                        href="#"
+                      >
+                        <DirectionsBusIcon
+                          fontSize="small"
+                          style={{ color: "#151B54" }}
+                        />
+                      </IconButton>
+                    </td>
+                    <td>
+                      <IconButton
+                        aria-label="edit"
+                        color="primary"
+                        size="small"
+                        href={`/updatebusroutes/${bus._id}`}
                       >
                         <EditIcon
                           fontSize="small"
                           style={{ color: "#151B54" }}
                         />
                       </IconButton>{" "}
+                      &nbsp;
+                      <IconButton aria-label="delete" size="small">
+                        <DeleteForeverIcon
+                          fontSize="small"
+                          onClick={() => this.onDelete(bus._id)}
+                          style={{ color: "red" }}
+                        />
+                      </IconButton>
                     </td>
                   </tr>
                 ))}
@@ -116,6 +140,8 @@ export default class BusRouteDetails extends Component {
             </table>
           </div>
         </div>
+        <br />
+        <br />
         <br />
         <Footer />
       </div>

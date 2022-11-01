@@ -4,8 +4,8 @@ const Bus = require("../models/bus.models");
 //add new buse route
 const addBusRoute = async (req, res) => {
   let newBusRoute = new timetable(req.body);
-
-  const busNumber = await timetable.find({ busNumber: newBusRoute.busNumber });
+  const busNumber = await timetable.find({ 
+    busNumber: newBusRoute.busNumber });
 
   if (busNumber.length == 0) {
     newBusRoute.save((err) => {
@@ -25,9 +25,9 @@ const addBusRoute = async (req, res) => {
   }
 };
 
-//get all added buss
-const GetAllBusRoutes = async (req, res) => {
-  timetable.find().exec((err, busRoutes) => {
+//get all added buse routes
+const GetAllBuseRoutes = async (req, res) => {
+  timetable.find().exec((err, bus) => {
     if (err) {
       return res.status(400).json({
         error: err,
@@ -35,12 +35,28 @@ const GetAllBusRoutes = async (req, res) => {
     }
     return res.status(200).json({
       success: true,
-      existingBusRoutes: busRoutes,
+      existingBusRoutes: bus,
     });
   });
 };
 
-//update bus route
+// //get one bus route
+const GetOneBusRoute = async (req, res) => {
+  let id = req.params.id;
+  timetable.findById(id, (err, busRoutes) => {
+    if (err) {
+      return res.status(400).json({
+        error: err,
+      });
+    }
+    return res.status(200).json({
+      success: true,
+      existingBusRoute: busRoutes,
+    });
+  });
+};
+
+// //update bus route
 const UpdateBusRoute = (req, res) => {
   timetable.findByIdAndUpdate(
     req.params.id,
@@ -60,25 +76,30 @@ const UpdateBusRoute = (req, res) => {
   );
 };
 
-//get one bus route
-const GetOneBusRoute = async (req, res) => {
-  let id = req.params.id;
-  timetable.findById(id, (err, busRoute) => {
-    if (err) {
+// //delete bus rotes
+const DeleteBusRoutes = (req, res) => {
+  timetable.findByIdAndRemove(req.params.id).exec((
+    err, deletebusroutes
+    ) => {
+    if (err)
       return res.status(400).json({
-        error: err,
+        message: "Deletion Unsuccessfull",
+        err,
       });
-    }
-    return res.status(200).json({
-      success: true,
-      existingBusRoute: busRoute,
+
+    return res.json({
+      message: "Deletion Successfull",
+      deletebusroutes,
     });
   });
 };
 
+
 module.exports = {
   addBusRoute,
-  GetAllBusRoutes,
-  UpdateBusRoute,
+  GetAllBuseRoutes,
   GetOneBusRoute,
+  UpdateBusRoute,
+  DeleteBusRoutes
+
 };
