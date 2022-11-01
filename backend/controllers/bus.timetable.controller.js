@@ -53,7 +53,7 @@ const GetOneBusRoute = async (req, res) => {
     }
     return res.status(200).json({
       success: true,
-      existingBusRoute: busRoutes,
+      existingBusRoutes: busRoutes,
     });
   });
 };
