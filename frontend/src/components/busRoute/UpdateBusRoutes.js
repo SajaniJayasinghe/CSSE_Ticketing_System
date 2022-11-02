@@ -22,13 +22,13 @@ export default function UpdateBusRoutes() {
       .get(`http://localhost:8080/api/busRoute/getonebusroutes/${id}`)
       .then((res) => {
         if (res.data) {
-          setbusNumber(res.data.existingBusRoute.busNumber);
-          setroute(res.data.existingBusRoute.route);
-          setinspectorName(res.data.existingBusRoute.inspectorName);
-          setdeparture(res.data.existingBusRoute.departure);
-          setdepartureTime(res.data.existingBusRoute.departureTime);
-          setdestination(res.data.existingBusRoute.destination);
-          setdestinationTime(res.data.existingBusRoute.destinationTime);
+          setbusNumber(res.data.existingBusRoutes.busNumber);
+          setroute(res.data.existingBusRoutes.route);
+          setinspectorName(res.data.existingBusRoutes.inspectorName);
+          setdeparture(res.data.existingBusRoutes.departure);
+          setdepartureTime(res.data.existingBusRoutes.departureTime);
+          setdestination(res.data.existingBusRoutes.destination);
+          setdestinationTime(res.data.existingBusRoutes.destinationTime);
         }
         console.log(res.data);
       });
@@ -63,7 +63,8 @@ export default function UpdateBusRoutes() {
   return (
     <div>
       <AdminDashboardNavbar />
-      <br /><br />
+      <br />
+      <br />
       <div class="row d-flex align-items-center justify-content-center">
         <div
           style={{
@@ -71,244 +72,236 @@ export default function UpdateBusRoutes() {
             background: "#C9DFEC",
             height: 650,
             backgroundSize: "1000px ",
-            borderRadius:30
+            borderRadius: 30,
           }}
         >
           <div className="card-body">
-          <form action="" method="post" name="form" onSubmit={onUpdate}>
-            <div className="row g-0">
-              <div className="col-xl-7 d-none d-xl-block">
-                <br />
-                <h3
-                  style={{
-                    marginLeft: 430,
-                    marginTop: -10,
-                    fontFamily: "times new roman",
-                    fontSize: 28,
-                  }}
-                >
-                  <b>UPDATE&nbsp;ROUTES</b>
-                </h3><br/>
-              </div>
-
-              <div className="form-outline mb-2">
-                <span
-                  id="passwordHelpInline"
-                  className="form-text"
-                 
-                  style={{ marginLeft: 435 ,}}
-                >
-                  1. Enter Bus Number
-                </span>
-                <div
-                  className="col-md-5"
-                  style={{ marginRight: 12, marginLeft: 416 }}
-                >
-                  <input
-                    type="text"
-                    value={busNumber}
-                    className="form-control"
-                    onChange={(e) => {
+            <form action="" method="post" name="form" onSubmit={onUpdate}>
+              <div className="row g-0">
+                <div className="col-xl-7 d-none d-xl-block">
+                  <br />
+                  <h3
+                    style={{
+                      marginLeft: 430,
+                      marginTop: -10,
+                      fontFamily: "times new roman",
+                      fontSize: 28,
+                    }}
+                  >
+                    <b>UPDATE&nbsp;ROUTES</b>
+                  </h3>
+                  <br />
+                </div>
+                <div className="form-outline mb-2">
+                  <span
+                    id="passwordHelpInline"
+                    className="form-text"
+                    style={{ marginLeft: 435 }}
+                  >
+                    1. Enter Bus Number
+                  </span>
+                  <div
+                    className="col-md-5"
+                    style={{ marginRight: 12, marginLeft: 416 }}
+                  >
+                    <input
+                      type="text"
+                      value={busNumber}
+                      className="form-control"
+                      onChange={(e) => {
                         setbusNumber(e.target.value);
                       }}
                       readOnly
-                    required
-                  />
+                      required
+                    />
+                  </div>
                 </div>
-              </div>
-
-              <div className="form-outline mb-2">
-                <span
-                  id="passwordHelpInline"
-                  className="form-text"
-                  style={{ marginLeft: 435 }}
-                >
-                  2. Enter Bus Routes
-                </span>
-                <div
-                  className="col-md-5"
-                  style={{ marginRight: 12, marginLeft: 416 }}
-                >
-                  <select
-                    type="number"
-                    value={route}
-                    class="form-control"
-                    name="route"
-                    onChange={(e) => {
-                      setroute(e.target.value);
-                    }}
-                    required
+                <div className="form-outline mb-2">
+                  <span
+                    id="passwordHelpInline"
+                    className="form-text"
+                    style={{ marginLeft: 435 }}
                   >
-                    <option value="">Select Root Number</option>
-                    <option value="177">177</option>
-                    <option value="156">156</option>
-                    <option value="170">170</option>
-                    <option value="356">356</option>
-                    <option value="253">253</option>
-                    <option value="245">245</option>
-                    <option value="255">255</option>
-                    <option value="245">245</option>
-                    <option value="142">142</option>
-                    <option value="190">190</option>
-                  </select>
+                    2. Enter Bus Routes
+                  </span>
+                  <div
+                    className="col-md-5"
+                    style={{ marginRight: 12, marginLeft: 416 }}
+                  >
+                    <select
+                      type="number"
+                      value={route}
+                      class="form-control"
+                      name="route"
+                      onChange={(e) => {
+                        setroute(e.target.value);
+                      }}
+                      required
+                    >
+                      <option value="">Select Root Number</option>
+                      <option value="177">177</option>
+                      <option value="156">156</option>
+                      <option value="170">170</option>
+                      <option value="356">356</option>
+                      <option value="253">253</option>
+                      <option value="245">245</option>
+                      <option value="255">255</option>
+                      <option value="245">245</option>
+                      <option value="142">142</option>
+                      <option value="190">190</option>
+                    </select>
+                  </div>
                 </div>
-              </div>
-
-              <div className="form-outline mb-2">
-                <span
-                  id="passwordHelpInline"
-                  className="form-text"
-                  style={{ marginLeft: 435 }}
-                >
-                  3. Enter InspectorName
-                </span>
-                <div
-                  className="col-md-5"
-                  style={{ marginRight: 12, marginLeft: 416 }}
-                >
-                  <input
-                    type="text"
-                    onChange={(e) => {
+                <div className="form-outline mb-2">
+                  <span
+                    id="passwordHelpInline"
+                    className="form-text"
+                    style={{ marginLeft: 435 }}
+                  >
+                    3. Enter InspectorName
+                  </span>
+                  <div
+                    className="col-md-5"
+                    style={{ marginRight: 12, marginLeft: 416 }}
+                  >
+                    <input
+                      type="text"
+                      onChange={(e) => {
                         setinspectorName(e.target.value);
                       }}
-                    value={inspectorName}
-                    className="form-control"
-                    required
-                  />
+                      value={inspectorName}
+                      className="form-control"
+                      required
+                    />
+                  </div>
                 </div>
-              </div>
-
-              <div className="form-outline mb-2">
-                <span
-                  id="passwordHelpInline"
-                  className="form-text"
-                  style={{ marginLeft: 435 }}
-                >
-                  4. Enter Departure
-                </span>
-                <div
-                  className="col-md-5"
-                  style={{ marginRight: 12, marginLeft: 416 }}
-                >
-                  <input
-                    type="text"
-                    onChange={(e) => {
+                <div className="form-outline mb-2">
+                  <span
+                    id="passwordHelpInline"
+                    className="form-text"
+                    style={{ marginLeft: 435 }}
+                  >
+                    4. Enter Departure
+                  </span>
+                  <div
+                    className="col-md-5"
+                    style={{ marginRight: 12, marginLeft: 416 }}
+                  >
+                    <input
+                      type="text"
+                      onChange={(e) => {
                         setdeparture(e.target.value);
                       }}
-                    value={departure}
-                    inspectorName
-                    className="form-control"
-                    required
-                  />
+                      value={departure}
+                      inspectorName
+                      className="form-control"
+                      required
+                    />
+                  </div>
                 </div>
-              </div>
-
-              <div className="form-outline mb-2">
-                <span
-                  id="passwordHelpInline"
-                  className="form-text"
-                  style={{ marginLeft: 435 }}
-                >
-                  5. Enter Departure Time
-                </span>
-                <div
-                  className="col-md-5"
-                  style={{ marginRight: 12, marginLeft: 416 }}
-                >
-                  <input
-                    type="text"
-                    onChange={(e) => {
+                <div className="form-outline mb-2">
+                  <span
+                    id="passwordHelpInline"
+                    className="form-text"
+                    style={{ marginLeft: 435 }}
+                  >
+                    5. Enter Departure Time
+                  </span>
+                  <div
+                    className="col-md-5"
+                    style={{ marginRight: 12, marginLeft: 416 }}
+                  >
+                    <input
+                      type="text"
+                      onChange={(e) => {
                         setdepartureTime(e.target.value);
                       }}
-                    value={departureTime}
-                    className="form-control"
-                    required
-                  />
+                      value={departureTime}
+                      className="form-control"
+                      required
+                    />
+                  </div>
                 </div>
-              </div>
-
-              <div className="form-outline mb-2">
-                <span
-                  id="passwordHelpInline"
-                  className="form-text"
-                  style={{ marginLeft: 435 }}
-                >
-                  6. Enter Destination
-                </span>
-                <div
-                  className="col-md-5"
-                  style={{ marginRight: 12, marginLeft: 416 }}
-                >
-                  <input
-                    type="text"
-                    onChange={(e) => {
+                <div className="form-outline mb-2">
+                  <span
+                    id="passwordHelpInline"
+                    className="form-text"
+                    style={{ marginLeft: 435 }}
+                  >
+                    6. Enter Destination
+                  </span>
+                  <div
+                    className="col-md-5"
+                    style={{ marginRight: 12, marginLeft: 416 }}
+                  >
+                    <input
+                      type="text"
+                      onChange={(e) => {
                         setdestination(e.target.value);
                       }}
-                    value={destination}
-                    className="form-control"
-                    required
-                  />
+                      value={destination}
+                      className="form-control"
+                      required
+                    />
+                  </div>
                 </div>
-              </div>
-
-              <div className="form-outline mb-2">
-                <span
-                  id="passwordHelpInline"
-                  className="form-text"
-                  style={{ marginLeft: 435 }}
-                >
-                  7. Enter Destination Time
-                </span>
-                <div
-                  className="col-md-5"
-                  style={{ marginRight: 12, marginLeft: 416 }}
-                >
-                  <input
-                    type="text"
-                    onChange={(e) => {
+                <div className="form-outline mb-2">
+                  <span
+                    id="passwordHelpInline"
+                    className="form-text"
+                    style={{ marginLeft: 435 }}
+                  >
+                    7. Enter Destination Time
+                  </span>
+                  <div
+                    className="col-md-5"
+                    style={{ marginRight: 12, marginLeft: 416 }}
+                  >
+                    <input
+                      type="text"
+                      onChange={(e) => {
                         setdestinationTime(e.target.value);
                       }}
-                    value={destinationTime}
-                    className="form-control"
-                    required
-                  />
+                      value={destinationTime}
+                      className="form-control"
+                      required
+                    />
+                  </div>
                 </div>
+                <Button
+                  variant="contained"
+                  className="w-10"
+                  style={{
+                    background: "#488AC7",
+                    marginTop: 7,
+                    width: 15 + "%",
+                    color: "black",
+                    borderRadius: 20,
+                    marginLeft: 475,
+                  }}
+                  disableElevation
+                  type="submit"
+                >
+                  <b> UPDATE</b>
+                </Button>
+                &nbsp; &nbsp;
+                <Button
+                  variant="contained"
+                  href="/busDetails"
+                  className="w-10"
+                  style={{
+                    background: "#488AC7",
+                    width: 15 + "%",
+                    marginTop: 7,
+                    color: "black",
+                    borderRadius: 20,
+                  }}
+                  disableElevation
+                  type="submit"
+                >
+                  <b>CANCEL</b>
+                </Button>
               </div>
-
-              <Button
-                      variant="contained"
-                      className="w-10"
-                      style={{
-                        background: "#488AC7",
-                        marginTop:7,
-                        width: 15 + "%",
-                        color: "black",
-                        borderRadius: 20,
-                        marginLeft: 475,
-                      }}
-                      disableElevation
-                      type="submit"
-                    >
-                     <b> UPDATE</b>
-                    </Button>
-                    &nbsp; &nbsp;
-                    <Button
-                      variant="contained"
-                      href="/busDetails"
-                      className="w-10"
-                      style={{
-                        background: "#488AC7",
-                        width: 15 + "%",
-                        marginTop:7,
-                        color: "black",
-                        borderRadius: 20,
-                      }}
-                      disableElevation
-                      type="submit"
-                    >
-                      <b>CANCEL</b>
-                    </Button>
-            </div>
             </form>
           </div>
         </div>
@@ -319,7 +312,7 @@ export default function UpdateBusRoutes() {
         style={{
           width: 530,
           height: 530,
-          marginLeft:320,
+          marginLeft: 320,
           marginRight: 200,
           marginTop: -650,
         }}
