@@ -38,7 +38,7 @@ export default function InspectorSignUp() {
       country: country,
       userExpDate: userExpDate,
     };
-    if (password == confirmpassword) {
+    if (password === confirmpassword) {
       console.log(newInspector);
       axios
         .post("http://localhost:8080/api/user/registeruser", newInspector)
@@ -76,7 +76,7 @@ export default function InspectorSignUp() {
           style={{
             width: 1000,
             background: "#C9DFEC",
-            height: 820,
+            height: 1000,
             borderRadius: "20px",
           }}
         >
@@ -191,175 +191,249 @@ export default function InspectorSignUp() {
                         required
                       >
                         <option value="">Select</option>
-                        <option value="Inspector">Inspector</option>
-                        {/* <option value="LocalPassenager">LocalPassenager</option>
+                        <option value="LocalPassenager">LocalPassenager</option>
                         <option value="ForeignPassenger">
                           ForeignPassenger
-                        </option> */}
+                        </option>
                       </select>
                     </div>
                   </div>
+                  {role === "LocalPassenager" || role === "ForeignPassenger" ? (
+                    <>
+                      <div className="form-outline mb-2">
+                        <span
+                          id="passwordHelpInline"
+                          className="form-text"
+                          style={{ marginBottom: "2px" }}
+                        >
+                          <i
+                            className="fa fa-user"
+                            style={{ marginRight: 12, marginLeft: 16 }}
+                          ></i>
+                          First Name
+                        </span>
+                        <div className="col-md-11">
+                          <input
+                            type="text"
+                            placeholder="Enter First Name"
+                            className="form-control"
+                            onChange={(e) => setfirstName(e.target.value)}
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div className="form-outline mb-2">
+                        <span
+                          id="passwordHelpInline"
+                          className="form-text"
+                          style={{ marginBottom: "2px" }}
+                        >
+                          <i
+                            className="fa fa-user"
+                            style={{ marginRight: 12, marginLeft: 16 }}
+                          ></i>
+                          Last Name
+                        </span>
+                        <div className="col-md-11">
+                          <input
+                            type="text"
+                            placeholder="Enter Last Name"
+                            className="form-control"
+                            onChange={(e) => setlastName(e.target.value)}
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div className="form-outline mb-2">
+                        <span
+                          id="passwordHelpInline"
+                          className="form-text"
+                          style={{ marginBottom: "2px" }}
+                        >
+                          <i
+                            className="fa fa-envelope"
+                            style={{ marginRight: 12, marginLeft: 16 }}
+                          ></i>
+                          Email Address
+                        </span>
+                        <div className="col-md-11">
+                          <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Enter Email Address"
+                            onChange={(e) => setemail(e.target.value)}
+                            pattern="(?![.-])((?![.-][.-])[a-zA-Z\d.-]){0,63}[a-zA-Z\d]@((?!-)((?!--)[a-zA-Z\d-]){0,63}[a-zA-Z\d]\.){1,2}([a-zA-Z]{2,14}\.)?[a-zA-Z]{2,14}"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div className="form-outline mb-2">
+                        <span
+                          id="passwordHelpInline"
+                          className="form-text"
+                          style={{ marginBottom: "2px" }}
+                        >
+                          <i
+                            className="fa fa-phone"
+                            style={{ marginRight: 12, marginLeft: 16 }}
+                          ></i>
+                          Phone Number
+                        </span>
+                        <div className="col-md-11">
+                          <input
+                            type="text"
+                            placeholder="Enter Phone Number"
+                            className="form-control"
+                            onChange={(e) => setphoneNo(e.target.value)}
+                            pattern="[0-9]{10}"
+                            required
+                          />
+                        </div>
+                      </div>
 
-                  {/* {role === "Inspector" ? ( */}
-                  {/* <> */}
-                  <div className="form-outline mb-2">
-                    <span
-                      id="passwordHelpInline"
-                      className="form-text"
-                      style={{ marginBottom: "2px" }}
-                    >
-                      <i
-                        className="fa fa-user"
-                        style={{ marginRight: 12, marginLeft: 16 }}
-                      ></i>
-                      First Name
-                    </span>
-                    <div className="col-md-11">
-                      <input
-                        type="text"
-                        placeholder="Enter First Name"
-                        className="form-control"
-                        onChange={(e) => setfirstName(e.target.value)}
-                        required
-                      />
+                      <div className="form-outline mb-2">
+                        <span
+                          id="passwordHelpInline"
+                          className="form-text"
+                          style={{ marginBottom: "2px", marginLeft: 20 }}
+                        >
+                          <i className="fa fa-key" aria-hidden="true"></i>
+                          &nbsp;&nbsp;&nbsp;Password
+                        </span>
+                        <div className="col-md-11">
+                          <input
+                            type="password"
+                            className="form-control"
+                            data-toggle="tooltip"
+                            placeholder="Enter Password"
+                            data-placement="center"
+                            title="Your password MUST contain at least 8 charactors, including UPPER-lowercase letters and at least one number and a charactor = 'Sample@523'"
+                            pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$"
+                            onChange={(e) => setpassword(e.target.value)}
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div className="form-outline mb-2">
+                        <span
+                          id="passwordHelpInline"
+                          className="form-text"
+                          style={{ marginBottom: "2px", marginLeft: 20 }}
+                        >
+                          <i className="fa fa-unlock-alt"></i>
+                          &nbsp;&nbsp;&nbsp;Confirm Password
+                        </span>
+                        <div className="col-md-11">
+                          <input
+                            type="password"
+                            className="form-control"
+                            placeholder="Enter Confirm Password"
+                            title="Your password MUST contain at least 8 charactors, including UPPER-lowercase letters and at least one number and a charactor = 'Sample@523'"
+                            pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$"
+                            onChange={(e) => setconfirmpassword(e.target.value)}
+                          />
+                        </div>
+                      </div>
+                    </>
+                  ) : null}
+                  {role === "LocalPassenager" ? (
+                    <div className="form-outline mb-2">
+                      <span
+                        id="passwordHelpInline"
+                        className="form-text"
+                        style={{ marginBottom: "2px" }}
+                      >
+                        <i
+                          className="fa fa-address-card"
+                          style={{ marginRight: 12, marginLeft: 16 }}
+                        ></i>
+                        NIC Number
+                      </span>
+                      <div className="col-md-11">
+                        <input
+                          type="text"
+                          placeholder="Enter NIC Number"
+                          className="form-control"
+                          pattern="^[a-zA-Z0-9]*$"
+                          onChange={(e) => setnic(e.target.value)}
+                          required
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div className="form-outline mb-2">
-                    <span
-                      id="passwordHelpInline"
-                      className="form-text"
-                      style={{ marginBottom: "2px" }}
-                    >
-                      <i
-                        className="fa fa-user"
-                        style={{ marginRight: 12, marginLeft: 16 }}
-                      ></i>
-                      Last Name
-                    </span>
-                    <div className="col-md-11">
-                      <input
-                        type="text"
-                        placeholder="Enter Last Name"
-                        className="form-control"
-                        onChange={(e) => setlastName(e.target.value)}
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div className="form-outline mb-2">
-                    <span
-                      id="passwordHelpInline"
-                      className="form-text"
-                      style={{ marginBottom: "2px" }}
-                    >
-                      <i
-                        className="fa fa-envelope"
-                        style={{ marginRight: 12, marginLeft: 16 }}
-                      ></i>
-                      Email Address
-                    </span>
-                    <div className="col-md-11">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Enter Email Address"
-                        onChange={(e) => setemail(e.target.value)}
-                        pattern="(?![.-])((?![.-][.-])[a-zA-Z\d.-]){0,63}[a-zA-Z\d]@((?!-)((?!--)[a-zA-Z\d-]){0,63}[a-zA-Z\d]\.){1,2}([a-zA-Z]{2,14}\.)?[a-zA-Z]{2,14}"
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div className="form-outline mb-2">
-                    <span
-                      id="passwordHelpInline"
-                      className="form-text"
-                      style={{ marginBottom: "2px" }}
-                    >
-                      <i
-                        className="fa fa-phone"
-                        style={{ marginRight: 12, marginLeft: 16 }}
-                      ></i>
-                      Phone Number
-                    </span>
-                    <div className="col-md-11">
-                      <input
-                        type="text"
-                        placeholder="Enter Phone Number"
-                        className="form-control"
-                        onChange={(e) => setphoneNo(e.target.value)}
-                        pattern="[0-9]{10}"
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div className="form-outline mb-2">
-                    <span
-                      id="passwordHelpInline"
-                      className="form-text"
-                      style={{ marginBottom: "2px" }}
-                    >
-                      <i
-                        className="fa fa-address-card"
-                        style={{ marginRight: 12, marginLeft: 16 }}
-                      ></i>
-                      NIC Number
-                    </span>
-                    <div className="col-md-11">
-                      <input
-                        type="text"
-                        placeholder="Enter NIC Number"
-                        className="form-control"
-                        pattern="^[a-zA-Z0-9]*$"
-                        onChange={(e) => setnic(e.target.value)}
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div className="form-outline mb-2">
-                    <span
-                      id="passwordHelpInline"
-                      className="form-text"
-                      style={{ marginBottom: "2px", marginLeft: 20 }}
-                    >
-                      <i className="fa fa-key" aria-hidden="true"></i>
-                      &nbsp;&nbsp;&nbsp;Password
-                    </span>
-                    <div className="col-md-11">
-                      <input
-                        type="password"
-                        className="form-control"
-                        data-toggle="tooltip"
-                        placeholder="Enter Password"
-                        data-placement="center"
-                        title="Your password MUST contain at least 8 charactors, including UPPER-lowercase letters and at least one number and a charactor = 'Sample@523'"
-                        pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$"
-                        onChange={(e) => setpassword(e.target.value)}
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div className="form-outline mb-2">
-                    <span
-                      id="passwordHelpInline"
-                      className="form-text"
-                      style={{ marginBottom: "2px", marginLeft: 20 }}
-                    >
-                      <i className="fa fa-unlock-alt"></i>
-                      &nbsp;&nbsp;&nbsp;Confirm Password
-                    </span>
-                    <div className="col-md-11">
-                      <input
-                        type="password"
-                        className="form-control"
-                        placeholder="Enter Confirm Password"
-                        title="Your password MUST contain at least 8 charactors, including UPPER-lowercase letters and at least one number and a charactor = 'Sample@523'"
-                        pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$"
-                        onChange={(e) => setconfirmpassword(e.target.value)}
-                      />
-                    </div>
-                  </div>
-                  {/* </>
-                  ) : null} */}
+                  ) : null}
+                  {role === "ForeignPassenger" ? (
+                    <>
+                      <div className="form-outline mb-2">
+                        <span
+                          id="passwordHelpInline"
+                          className="form-text"
+                          style={{ marginBottom: "2px" }}
+                        >
+                          <i
+                            className="fa fa-address-card"
+                            style={{ marginRight: 12, marginLeft: 16 }}
+                          ></i>
+                          Passport Number
+                        </span>
+                        <div className="col-md-11">
+                          <input
+                            type="text"
+                            placeholder="Enter Passport Number"
+                            className="form-control"
+                            pattern="^[a-zA-Z0-9]*$"
+                            onChange={(e) => setpassportNo(e.target.value)}
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div className="form-outline mb-2">
+                        <span
+                          id="passwordHelpInline"
+                          className="form-text"
+                          style={{ marginBottom: "2px" }}
+                        >
+                          <i
+                            className="fa fa-address-card"
+                            style={{ marginRight: 12, marginLeft: 16 }}
+                          ></i>
+                          Country
+                        </span>
+                        <div className="col-md-11">
+                          <input
+                            type="text"
+                            placeholder="Enter Your Country"
+                            className="form-control"
+                            pattern="^[a-zA-Z0-9]*$"
+                            onChange={(e) => setcountry(e.target.value)}
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div className="form-outline mb-2">
+                        <span
+                          id="passwordHelpInline"
+                          className="form-text"
+                          style={{ marginBottom: "2px" }}
+                        >
+                          <i
+                            className="fa fa-address-card"
+                            style={{ marginRight: 12, marginLeft: 16 }}
+                          ></i>
+                          User Account Expiry Date
+                        </span>
+                        <div className="col-md-11">
+                          <input
+                            type="date"
+                            placeholder="Select Account Expiry Date"
+                            className="form-control"
+                            pattern="^[a-zA-Z0-9]*$"
+                            onChange={(e) => setuserExpDate(e.target.value)}
+                            required
+                          />
+                        </div>
+                      </div>
+                    </>
+                  ) : null}
                 </div>
               </div>
               <br />
@@ -405,7 +479,7 @@ export default function InspectorSignUp() {
           src="https://stories.freepiklabs.com/storage/15542/Travelers-01.svg"
           style={{
             width: 750,
-            marginLeft:-100,
+            marginLeft: -100,
             marginRight: 200,
             marginTop: -750,
           }}

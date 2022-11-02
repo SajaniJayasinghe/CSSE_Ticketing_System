@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const timetableSchema = new mongoose.Schema({
+const busRouteSchema = new mongoose.Schema({
   busNumber: {
     type: String,
     required: true,
@@ -33,5 +33,5 @@ const timetableSchema = new mongoose.Schema({
   busstops: [{ type: String, trim: true }],
 });
 
-const timetable = mongoose.model("timetable", timetableSchema);
-module.exports = timetable;
+const busRoute = mongoose.model("busRoute", busRouteSchema);
+module.exports = busRoute;

@@ -5,14 +5,14 @@ import Paper from "@material-ui/core/Paper";
 import AdminDashboardNavbar from "./Layout/AdminDashboardNavbar";
 import Footer from "./Layout/Footer";
 
-export default function () {
+const Checkroutes = () => {
   const [busNumber, setbusNumber] = useState("");
   const [route, setroute] = useState("");
   const [departure, setdeparture] = useState("");
   const [departureTime, setdepartureTime] = useState("");
   const [destination, setdestination] = useState("");
   const [destinationTime, setdestinationTime] = useState("");
-  const [busstops, setbusstops] = useState("");
+  const [busstops, setbusstops] = useState([""]);
   const [inspectorName, setinspectorName] = useState("");
 
   const params = useParams();
@@ -91,8 +91,12 @@ export default function () {
                     <b>InspectorName &nbsp; : &nbsp; {inspectorName}</b>
                   </div>
                   <div style={{ display: "fleX", marginLeft: "50px" }}>
-                    <b>Bus Stops &nbsp; : &nbsp; </b>
-
+                    <b>Bus Stops &nbsp; :</b>
+                    <div>
+                      {busstops.map((b) => (
+                        <div> &nbsp;{b}</div>
+                      ))}
+                    </div>
                   </div>
                   <br />
                 </div>
@@ -104,4 +108,5 @@ export default function () {
       <Footer />
     </div>
   );
-}
+};
+export default Checkroutes;

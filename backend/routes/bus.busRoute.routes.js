@@ -7,13 +7,12 @@ const {
   GetOneBusRoute,
   UpdateBusRoute,
   DeleteBusRoutes,
-} = require("../controllers/bus.timetable.controller");
+} = require("../controllers/bus.busRoute.controller");
 
 BusRouteRouter.post("/addbusroutes", addBusRoute);
 BusRouteRouter.get("/allbusroutes", GetAllBuseRoutes);
 BusRouteRouter.get("/getonebusroutes/:id", GetOneBusRoute);
 BusRouteRouter.put("/updatebusroutes/:id", UpdateBusRoute);
 BusRouteRouter.delete("/deletebusroutes/:id", DeleteBusRoutes);
-
 
 module.exports = BusRouteRouter;

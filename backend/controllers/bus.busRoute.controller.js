@@ -1,10 +1,10 @@
-const timetable = require("../models/bus.timetable.models");
+const busRoute = require("../models/bus.busRoute.models");
 const Bus = require("../models/bus.models");
 
 //add new buse route
 const addBusRoute = async (req, res) => {
-  let newBusRoute = new timetable(req.body);
-  const busNumber = await timetable.find({
+  let newBusRoute = new busRoute(req.body);
+  const busNumber = await busRoute.find({
     busNumber: newBusRoute.busNumber,
   });
 
@@ -29,7 +29,7 @@ const addBusRoute = async (req, res) => {
 
 //get all added buse routes
 const GetAllBuseRoutes = async (req, res) => {
-  timetable.find().exec((err, bus) => {
+  busRoute.find().exec((err, bus) => {
     if (err) {
       return res.status(400).json({
         error: err,
@@ -45,7 +45,7 @@ const GetAllBuseRoutes = async (req, res) => {
 //get one bus route
 const GetOneBusRoute = async (req, res) => {
   let id = req.params.id;
-  timetable.findById(id, (err, busRoutes) => {
+  busRoute.findById(id, (err, busRoutes) => {
     if (err) {
       return res.status(400).json({
         error: err,
@@ -60,7 +60,7 @@ const GetOneBusRoute = async (req, res) => {
 
 // //update bus route
 const UpdateBusRoute = (req, res) => {
-  timetable.findByIdAndUpdate(
+  busRoute.findByIdAndUpdate(
     req.params.id,
     {
       $set: req.body,
@@ -80,7 +80,7 @@ const UpdateBusRoute = (req, res) => {
 
 // //delete bus rotes
 const DeleteBusRoutes = (req, res) => {
-  timetable.findByIdAndRemove(req.params.id).exec((err, deletebusroutes) => {
+  busRoute.findByIdAndRemove(req.params.id).exec((err, deletebusroutes) => {
     if (err)
       return res.status(400).json({
         message: "Deletion Unsuccessfull",
@@ -100,5 +100,4 @@ module.exports = {
   GetOneBusRoute,
   UpdateBusRoute,
   DeleteBusRoutes,
-
 };

@@ -7,7 +7,7 @@ const dotenv = require("dotenv");
 //@import router
 const UserRouter = require("./routes/user.routes");
 const BusRouter = require("./routes/bus.routes");
-const BusRouteRouter = require("./routes/bus.timetable.routes");
+const BusRouteRouter = require("./routes/bus.busRoute.routes");
 
 const app = express();
 
