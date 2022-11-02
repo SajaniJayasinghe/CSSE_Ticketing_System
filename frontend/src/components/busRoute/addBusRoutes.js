@@ -8,6 +8,9 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import AdminDashboardNavbar from "../Layout/AdminDashboardNavbar";
+import Footer from "../Layout/Footer";
+import Button from "@material-ui/core/Button";
 
 import { MenuProps, useStyles, busStops } from "./addBusRoutes.utils";
 
@@ -69,6 +72,7 @@ function AddBusRoutes() {
       .post("http://localhost:8080/api/busRoute/addbusroutes", new_group)
       .then(() => {
         alert("Adding bus route Success");
+        window.location.href = "/busRoutes";
       })
       .catch((err) => {
         alert("Adding bus route unsuccess", err);
@@ -81,104 +85,301 @@ function AddBusRoutes() {
   };
 
   return (
-    <form action="" method="post" name="form" onSubmit={sendData}>
-      <div>
-        {" "}
-        Bus Route
-        <input
-          type="text"
-          value={busNumber}
-          class="form-control"
-          name="busNumber"
-          onChange={(e) => {
-            setbusNumber(e.target.value);
+    <div>
+      <AdminDashboardNavbar />
+      <br />
+      <div class="row d-flex align-items-center justify-content-center">
+        <div
+          style={{
+            width: 1000,
+            background: "#DBE9FA",
+            height: 600,
+            borderRadius: 25,
+            backgroundSize: "1000px ",
           }}
-          readOnly
-        />
-        <input
-          type="text"
-          value={departure}
-          class="form-control"
-          name="departure"
-          onChange={(e) => {
-            setdeparture(e.target.value);
-          }}
-          readOnly
-        />
-        <input
-          type="text"
-          value={departureTime}
-          class="form-control"
-          name="departureTime"
-          onChange={(e) => {
-            setdeparture(e.target.value);
-          }}
-        />
-        <input
-          type="text"
-          value={destination}
-          class="form-control"
-          name="destination"
-          onChange={(e) => {
-            setdestination(e.target.value);
-          }}
-          readOnly
-        />
-        <input
-          type="text"
-          value={destinationTime}
-          class="form-control"
-          name="destinationTime"
-          onChange={(e) => {
-            setdestination(e.target.value);
-          }}
-        />
-        <input
-          type="text"
-          value={route}
-          class="form-control"
-          name="route"
-          onChange={(e) => {
-            setroute(e.target.value);
-          }}
-          readOnly
-        />
-        <input
-          type="text"
-          value={inspectorName}
-          class="form-control"
-          name="route"
-          onChange={(e) => {
-            setInspectorName(e.target.value);
-          }}
-        />
-      </div>
-      <FormControl className={classes.formControl}>
-        <InputLabel id="mutiple-select-label">Select Bus Route</InputLabel>
-        <Select
-          labelId="mutiple-select-label"
-          multiple
-          value={selected}
-          onChange={handleChange}
-          renderValue={(selected) => selected.join(", ")}
-          MenuProps={MenuProps}
         >
-          {busStops.map((option) => (
-            <MenuItem key={option} value={option}>
-              <ListItemIcon>
-                <Checkbox checked={selected.indexOf(option) > -1} />
-              </ListItemIcon>
-              <ListItemText primary={option} />
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-      <div class="d-flex justify-content pt-3">
-        <button type="submit" class="btn btn-primary btn-2 ">
-          Submit
-        </button>
+          <div class="card-body">
+            <form action="" method="post" name="form" onSubmit={sendData}>
+              <div style={{ display: "flex" }}>
+                <div class="row g-0" style={{ flex: 1 }}>
+                  <img
+                    src=""
+                    style={{
+                      objectFit: "cover",
+                      height: 580,
+                      borderRadius: 25,
+                      marginLeft: -10,
+                      marginTop: -5,
+                    }}
+                  ></img>
+                </div>
+                <div class="col-xl-10" style={{ flex: 1 }}>
+                  <div class="form-outline mb-2">
+                    <h3
+                      style={{
+                        fontFamily: "times new roman",
+                        fontSize: 36,
+                        marginLeft: 50,
+                        color: "#0C090A",
+                        marginTop: 15,
+                      }}
+                    >
+                      <b>
+                        <u>ADD BUS ROUTES</u>
+                      </b>
+                    </h3>
+                    <br />
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        color: "#0C090A",
+                      }}
+                    >
+                      <div
+                        style={{
+                          minWidth: "185px",
+                          maxWidth: "100px",
+                          fontFamily: "times new roman",
+                          fontSize: 18,
+                        }}
+                      >
+                        1. Bus Number
+                      </div>
+
+                      <input
+                        type="text"
+                        value={busNumber}
+                        class="form-control"
+                        name="busNumber"
+                        style={{ marginTop: 10 }}
+                        onChange={(e) => {
+                          setbusNumber(e.target.value);
+                        }}
+                        readOnly
+                      />
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        color: "#0C090A",
+                      }}
+                    >
+                      <div
+                        style={{
+                          minWidth: "185px",
+                          maxWidth: "100px",
+                          fontFamily: "times new roman",
+                          fontSize: 18,
+                        }}
+                      >
+                        2. Bus Departure
+                      </div>
+                      <input
+                        type="text"
+                        style={{ marginTop: 10 }}
+                        value={departure}
+                        class="form-control"
+                        name="departure"
+                        onChange={(e) => {
+                          setdeparture(e.target.value);
+                        }}
+                        readOnly
+                      />
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        color: "#0C090A",
+                      }}
+                    >
+                      <div
+                        style={{
+                          minWidth: "185px",
+                          maxWidth: "100px",
+                          fontFamily: "times new roman",
+                          fontSize: 18,
+                        }}
+                      >
+                        3. Bus Departure Time
+                      </div>
+                      <input
+                        type="text"
+                        style={{ marginTop: 10 }}
+                        value={departureTime}
+                        class="form-control"
+                        name="departureTime"
+                        onChange={(e) => {
+                          setDepartureTime(e.target.value);
+                        }}
+                      />
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        color: "#0C090A",
+                      }}
+                    >
+                      <div
+                        style={{
+                          minWidth: "185px",
+                          maxWidth: "100px",
+                          fontFamily: "times new roman",
+                          fontSize: 18,
+                        }}
+                      >
+                        4. Bus Destination
+                      </div>
+                      <input
+                        type="text"
+                        value={destination}
+                        class="form-control"
+                        name="busNumber"
+                        style={{ marginTop: 10 }}
+                        onChange={(e) => {
+                          setdestination(e.target.value);
+                        }}
+                        readOnly
+                      />
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        color: "#0C090A",
+                      }}
+                    >
+                      <div
+                        style={{
+                          minWidth: "185px",
+                          maxWidth: "100px",
+                          fontFamily: "times new roman",
+                          fontSize: 18,
+                        }}
+                      >
+                        5. Bus Destination Time
+                      </div>
+                      <input
+                        type="text"
+                        value={destinationTime}
+                        class="form-control"
+                        name="busNumber"
+                        style={{ marginTop: 10 }}
+                        onChange={(e) => {
+                          setDestinationTime(e.target.value);
+                        }}
+                      />
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        color: "#0C090A",
+                      }}
+                    >
+                      <div
+                        style={{
+                          minWidth: "185px",
+                          maxWidth: "100px",
+                          fontFamily: "times new roman",
+                          fontSize: 18,
+                        }}
+                      >
+                        4. Bus Routes
+                      </div>
+                      <input
+                        type="text"
+                        style={{ marginTop: 10 }}
+                        value={route}
+                        class="form-control"
+                        name="route"
+                        onChange={(e) => {
+                          setroute(e.target.value);
+                        }}
+                        readOnly
+                      />
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        color: "#0C090A",
+                      }}
+                    >
+                      <div
+                        style={{
+                          minWidth: "185px",
+                          maxWidth: "100px",
+                          fontFamily: "times new roman",
+                          fontSize: 18,
+                        }}
+                      >
+                        5. Bus Inspector Name
+                      </div>
+                      <input
+                        type="text"
+                        style={{ marginTop: 10 }}
+                        value={inspectorName}
+                        class="form-control"
+                        name="inspectorName"
+                        onChange={(e) => {
+                          setInspectorName(e.target.value);
+                        }}
+                      />
+                    </div>
+                    <div style={{ marginLeft: 200 }}>
+                      <FormControl className={classes.formControl}>
+                        <InputLabel id="mutiple-select-label">
+                          Select Bus Stops
+                        </InputLabel>
+                        <Select
+                          labelId="mutiple-select-label"
+                          multiple
+                          value={selected}
+                          onChange={handleChange}
+                          renderValue={(selected) => selected.join(", ")}
+                          MenuProps={MenuProps}
+                        >
+                          {busStops.map((option) => (
+                            <MenuItem key={option} value={option}>
+                              <ListItemIcon>
+                                <Checkbox
+                                  checked={selected.indexOf(option) > -1}
+                                />
+                              </ListItemIcon>
+                              <ListItemText primary={option} />
+                            </MenuItem>
+                          ))}
+                        </Select>
+                      </FormControl>
+                    </div>{" "}
+                    <br />
+                    <Button
+                      type="submit"
+                      style={{
+                        background: "#357EC7",
+                        width: 24 + "%",
+                        marginLeft: 380,
+                        height: 20 + "%",
+                        color: "BLACK",
+                        borderRadius: 20,
+                      }}
+                    >
+                      <i className="fa fa-check-circle"></i>&nbsp;Submit
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
-    </form>
+      <br />
+      <Footer />
+    </div>
   );
 }
 
