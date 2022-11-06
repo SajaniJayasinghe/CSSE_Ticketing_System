@@ -38,7 +38,7 @@ export default class AdminDashboardNavbar extends Component {
                       color: "black",
                       fontFamily: "times new roman",
                       fontSize: 20,
-                      marginLeft: 250,
+                      marginLeft: 150,
                       marginRight: 40,
                     }}
                   >
