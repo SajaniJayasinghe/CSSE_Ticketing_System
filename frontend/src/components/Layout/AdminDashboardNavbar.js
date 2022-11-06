@@ -119,7 +119,7 @@ export default class AdminDashboardNavbar extends Component {
                       color: "black",
                       fontFamily: "times new roman",
                       fontSize: 20,
-                      marginLeft: 25,
+                      marginLeft: 15,
                       width: "200px",
                     }}
                   >
