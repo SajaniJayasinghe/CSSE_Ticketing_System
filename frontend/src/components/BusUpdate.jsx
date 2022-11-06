@@ -74,7 +74,7 @@ const BusUpdate = () => {
       )
       .then((res) => {
         console.log(res.data);
-        window.location.href = "/Buses";
+        window.location.href = "/busDetails";
       })
       .catch((err) => {
         console.log(err);

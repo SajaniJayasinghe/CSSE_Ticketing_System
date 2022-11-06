@@ -74,7 +74,7 @@ const DriverEdit = () => {
       )
       .then((res) => {
         console.log(res.data);
-        window.location.href = "/Drivers";
+        window.location.href = "/drivers";
       })
       .catch((err) => {
         console.log(err);

@@ -77,7 +77,7 @@ const InspectorEdit = () => {
       )
       .then((res) => {
         console.log(res.data);
-        window.location.href = "/viewIns";
+        window.location.href = "/inspector";
       })
       .catch((err) => {
         console.log(err);

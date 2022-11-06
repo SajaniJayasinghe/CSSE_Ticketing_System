@@ -50,29 +50,11 @@ export default class AdminDashboardNavbar extends Component {
                   <a
                     class="nav-link"
                     aria-current="page"
-                    href="#"
-                    style={{
-                      color: "black",
-                      fontFamily: "times new roman",
-                      fontSize: 20,
-                      marginLeft: 30,
-                      marginRight: 40,
-                    }}
-                  >
-                    <b>About</b>
-                  </a>
-                </li>
-
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    aria-current="page"
                     href="/inspector"
                     style={{
                       color: "black",
                       fontFamily: "times new roman",
                       fontSize: 20,
-
                       marginRight: 20,
                     }}
                   >
@@ -121,6 +103,7 @@ export default class AdminDashboardNavbar extends Component {
                       fontFamily: "times new roman",
                       fontSize: 20,
                       marginLeft: 55,
+                      width: "200px",
                     }}
                   >
                     <b>Recharge History</b>
@@ -136,7 +119,8 @@ export default class AdminDashboardNavbar extends Component {
                       color: "black",
                       fontFamily: "times new roman",
                       fontSize: 20,
-                      marginLeft: 55,
+                      marginLeft: 25,
+                      width: "200px",
                     }}
                   >
                     <b>Passenger Activities</b>
