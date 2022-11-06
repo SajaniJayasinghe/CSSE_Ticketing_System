@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class AdminDashboardNavbar extends Component {
   render() {
@@ -67,24 +67,7 @@ export default class AdminDashboardNavbar extends Component {
                   <a
                     class="nav-link"
                     aria-current="page"
-                    href="#"
-                    style={{
-                      color: "black",
-                      fontFamily: "times new roman",
-                      fontSize: 20,
-                      marginLeft: 30,
-                      marginRight: 40,
-                    }}
-                  >
-                    <b>Contact</b>
-                  </a>
-                </li>
-
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    aria-current="page"
-                    href="/busRoutes"
+                    href="/inspector"
                     style={{
                       color: "black",
                       fontFamily: "times new roman",
@@ -93,14 +76,14 @@ export default class AdminDashboardNavbar extends Component {
                       marginRight: 20,
                     }}
                   >
-                    <b>Routes</b>
+                    <b>Inspectors</b>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a
                     class="nav-link"
                     aria-current="page"
-                    href="/inspectorsignup"
+                    href="/drivers"
                     style={{
                       color: "black",
                       fontFamily: "times new roman",
@@ -108,7 +91,55 @@ export default class AdminDashboardNavbar extends Component {
                       marginLeft: 55,
                     }}
                   >
-                    <b>Inspectors Registration</b>
+                    <b>Drivers</b>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    aria-current="page"
+                    href="/recharge"
+                    style={{
+                      color: "black",
+                      fontFamily: "times new roman",
+                      fontSize: 20,
+                      marginLeft: 55,
+                    }}
+                  >
+                    <b>Recharge</b>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    aria-current="page"
+                    href="/rechargeHistory"
+                    style={{
+                      color: "black",
+                      fontFamily: "times new roman",
+                      fontSize: 20,
+                      marginLeft: 55,
+                    }}
+                  >
+                    <b>Recharge History</b>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    aria-current="page"
+                    href="/passengerActivities"
+                    style={{
+                      color: "black",
+                      fontFamily: "times new roman",
+                      fontSize: 20,
+                      marginLeft: 55,
+                    }}
+                  >
+                    <b>Passenger Activities</b>
                   </a>
                 </li>
               </ul>
@@ -116,6 +147,6 @@ export default class AdminDashboardNavbar extends Component {
           </div>
         </nav>
       </div>
-    )
+    );
   }
 }

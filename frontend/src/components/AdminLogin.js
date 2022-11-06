@@ -24,7 +24,10 @@ export default class AdminLogin extends Component {
       password: this.state.password,
     };
     await axios
-      .post("http://localhost:8080/api/user/login", userData)
+      .post(
+        "https://csse-hosting-app.herokuapp.com/api/user/userLogin",
+        userData
+      )
       .then((res) => {
         this.setState({
           token: res.data.token,
