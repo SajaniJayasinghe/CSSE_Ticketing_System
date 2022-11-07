@@ -2,17 +2,21 @@ const express = require("express");
 const BusRouter = express.Router();
 
 const {
-  BusRegister,
-  GetAllBuses,
-  GetOneBus,
+  RegisterBus,
   UpdateBus,
   DeleteBus,
+  GetAllBuses,
+  GetOneBus,
+  GetOneBusTemp,
+  //   GetAllBusesByRoute,
 } = require("../controllers/bus.controller");
 
-BusRouter.post("/addbus", BusRegister);
-BusRouter.get("/getallbus", GetAllBuses);
-BusRouter.get("/getonebus/:busNumberPlate", GetOneBus);
-BusRouter.put("/updatebus/:busNumberPlate", UpdateBus);
-BusRouter.delete("/deletebus/:busNumberPlate", DeleteBus);
+BusRouter.post("/registerBus", RegisterBus);
+BusRouter.patch("/updateBus/:busID", UpdateBus);
+BusRouter.delete("/deleteBus/:busID", DeleteBus);
+BusRouter.get("/getAllBuses", GetAllBuses);
+BusRouter.get("/getOneBus/:busID", GetOneBus);
+// BusRouter.get("/getAllBusesByRoute/:routeNo", GetAllBusesByRoute);
+BusRouter.get("/getOneBusTemp/:busID", GetOneBusTemp);
 
 module.exports = BusRouter;

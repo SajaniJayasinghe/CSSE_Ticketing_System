@@ -1,122 +1,6 @@
-// const User = require("../models/user.models");
-// const bcrypt = require("bcryptjs");
-// const jwt = require("jsonwebtoken");
-
-// //user register
-// const RegisterUser = async (req, res) => {
-//     try {
-//       const { name, username,nic, phoneNumber,myplan, password } = req.body;
-//       const existingUser = await User.findOne({ username: username });
-
-//       if (existingUser) {
-//         throw new Error("User already exists");
-//       }
-
-//       const createdUser = {
-//         name,
-//         username,
-//         nic,
-//         phoneNumber,
-//         myplan,
-//         password
-//       };
-
-//       const newuser = new User(createdUser);
-//       await newuser.save();
-//       const token = await newuser.generateAuthToken();
-//       res
-//         .status(201)
-//         .send({ status: "User Created", user: newuser, token: token });
-//     } catch (error) {
-//       console.log(error.message);
-//       return res.status(500).send({ error: error.message });
-//     }
-//   };
-
-// //user login
-// const LoginUser = async (req, res) => {
-//     try {
-//       const { username, password } = req.body;
-//       const User_s = await User.findByCredentials(username, password);
-//       const token = await User_s.generateAuthToken();
-//       res.status(200).send({ token: token, User_s: User_s });
-//     } catch (error) {
-//       res.status(500).send({ error: error.message });
-//       console.log(error);
-//     }
-//   };
-
-// //user profile
-// const GetUserProfile = async (req,res)=>{
-//     try {
-//       console.log(req.User);
-//       res.status(201);
-//       res.send({
-//         status : "User Details Fetched",
-//         User :req.User
-//       });
-//     } catch (error) {
-//       res.status(500)
-//       res.send({
-//         status: "Error with User Profile",
-//         error : error.message
-//       });
-//     }
-//   }
-
-// //user profile update
-// const UpdateProfile = async (req,res)=>{
-//     try {
-//       const {
-//         name,
-//         nic,
-//         phoneNumber,
-//         myplan,
-//       } = req.body
-
-//       const userUpdate = await User.findByIdAndUpdate(req.User._id,
-//         {
-//           name:name,
-//           nic:nic,
-//           phoneNumber:phoneNumber,
-//           myplan:myplan
-//         })
-//         res.status(200).send({
-//           status: "User Profile Updated",
-//           User_s: userUpdate
-//         })
-//     } catch (error) {
-//         res.status(500).send({error: error.message})
-//         console.log(error)
-//     }
-//   }
-
-// //delete user profile
-// const ProfileDelete = async (req,res)=>{
-//     try {
-//       const deleteProfile = await
-//       User.findByIdAndDelete(req.params.id);
-//       res.status(200).send({
-//          status: "User Deleted",
-//          user : deleteProfile
-//        });
-//     } catch (error) {
-//       res.status(500).send({
-//         status: "error with id",
-//         error: error.message });
-//     }
-//   }
-
-//   module.exports = {
-//     RegisterUser,
-//     LoginUser,
-//     GetUserProfile,
-//     UpdateProfile,
-//     ProfileDelete
-//   };
-
 const bcrypt = require("bcrypt");
-const User = require("../models/user.models");
+const User = require("../models/user.model");
+const UserTravel = require("../models/userTravel.model");
 const jwt = require("jsonwebtoken");
 const QRCode = require("qrcode");
 
@@ -136,7 +20,6 @@ const UserRegister = async (req, res) => {
       userExpDate,
       route,
       role,
-      busNumber,
     } = req.body;
     const user = await User.findOne({ email: email });
 
@@ -172,17 +55,21 @@ const UserRegister = async (req, res) => {
           phoneNo: phoneNo,
           nic: nic,
           password: hashedPassword,
-          totalCredit: 0.0,
+          totalCredit: 100.0,
           role: role,
         };
         const newLocalPassenger = await User.create(data);
-        if (newLocalPassenger) {
-          let data = {
-            userID: newLocalPassenger._id,
-          };
-          let stringData = JSON.stringify(data);
 
-          QRCode.toDataURL(stringData, function (err, GenaratedQR) {
+        if (newLocalPassenger) {
+          const encryptedUserID = jwt.sign(
+            { userID: newLocalPassenger._id },
+            process.env.JWT_SECRET_QR
+          );
+
+          //console.log(encryptedUserID);
+          //Slet stringData = JSON.stringify(data);
+
+          QRCode.toDataURL(encryptedUserID, function (err, GenaratedQR) {
             if (err) {
               console.log("error occurred in QR code generation");
             } else {
@@ -192,6 +79,7 @@ const UserRegister = async (req, res) => {
                 { new: true },
                 (err, updatedUser) => {
                   if (err) {
+                    User.findByIdAndDelete(newLocalPassenger._id);
                     res.status(400).send({
                       status: false,
                       message: "Local Passenger registration failed",
@@ -221,19 +109,20 @@ const UserRegister = async (req, res) => {
           phoneNo: phoneNo,
           passportNo: passportNo,
           password: hashedPassword,
-          totalCredit: 0,
+          totalCredit: 100.0,
           country: country,
           userExpDate: userExpDate,
           role: role,
         };
         const newForeignPassenger = await User.create(data);
         if (newForeignPassenger) {
-          let data = {
-            userID: newForeignPassenger._id,
-          };
-          let stringData = JSON.stringify(data);
+          const encryptedUserID = jwt.sign(
+            { userID: newForeignPassenger._id },
+            process.env.JWT_SECRET_QR
+          );
+          //let stringData = JSON.stringify(data);
 
-          QRCode.toDataURL(stringData, function (err, GenaratedQR) {
+          QRCode.toDataURL(encryptedUserID, function (err, GenaratedQR) {
             if (err) {
               console.log("error occurred in QR code generation");
             } else {
@@ -243,6 +132,7 @@ const UserRegister = async (req, res) => {
                 { new: true },
                 (err, updatedUser) => {
                   if (err) {
+                    User.findByIdAndDelete(newForeignPassenger._id);
                     res.status(400).send({
                       status: false,
                       message: "Foreign Passenger registration failed",
@@ -263,6 +153,30 @@ const UserRegister = async (req, res) => {
             message: "Foreign Passenger registration failed",
           });
         }
+      } else if (role == "Driver") {
+        const data = {
+          firstName: firstName,
+          lastName: lastName,
+          fullName: firstName + " " + lastName,
+          email: email,
+          phoneNo: phoneNo,
+          nic: nic,
+          password: hashedPassword,
+          busDriverStatus: false,
+          role: role,
+        };
+        const newInspector = await User.create(data);
+        if (newInspector) {
+          res.status(200).send({
+            status: true,
+            message: "Driver registered successfully",
+          });
+        } else {
+          res.status(400).send({
+            status: false,
+            message: "Driver registration failed",
+          });
+        }
       } else if (role == "Inspector") {
         const data = {
           firstName: firstName,
@@ -273,17 +187,16 @@ const UserRegister = async (req, res) => {
           nic: nic,
           password: hashedPassword,
           route: route,
-          busNumber: busNumber,
           role: role,
         };
         const newInspector = await User.create(data);
         if (newInspector) {
-          res.status(200).send({
+          return res.status(200).send({
             status: true,
             message: "Inspector registered successfully",
           });
         } else {
-          res.status(400).send({
+          return res.status(400).send({
             status: false,
             message: "Inspector registration failed",
           });
@@ -363,10 +276,10 @@ const UserLogin = async (req, res) => {
 //User Logout Function
 const UserLogout = async (req, res) => {
   try {
-    req.User.tokens = req.User.tokens.filter((token) => {
+    req.logedUser.tokens = req.logedUser.tokens.filter((token) => {
       return token.token !== req.token;
     });
-    await req.User.save();
+    await req.logedUser.save();
 
     return res.status(200).send({
       success: true,
@@ -377,12 +290,12 @@ const UserLogout = async (req, res) => {
   }
 };
 
-//User Profile details get using token
+//User Profile detais get using token
 const UserProfile = async (req, res) => {
   try {
-    const User = req.User;
+    const logedUser = req.logedUser;
 
-    return res.status(200).send({ status: true, user: User });
+    return res.status(200).send({ status: true, user: logedUser });
   } catch (err) {
     return res.status(500).send({ status: false, message: err.message });
   }
@@ -404,9 +317,10 @@ const GetOneUser = async (req, res) => {
   }
 };
 
+//User Profile Update
 const UpdateUser = async (req, res) => {
   try {
-    const userId = req.User._id;
+    const userId = req.logedUser._id;
     const { firstName, lastName, phoneNo, nic, passportNo, country, route } =
       req.body;
 
@@ -421,6 +335,7 @@ const UpdateUser = async (req, res) => {
         nic: nic,
         passportNo: passportNo,
         country: country,
+        route,
       };
 
       const updatedUser = await User.findByIdAndUpdate(userId, data);
@@ -444,9 +359,10 @@ const UpdateUser = async (req, res) => {
   }
 };
 
+//Delete User Profile
 const DeleteUserProfile = async (req, res) => {
   try {
-    const userId = req.User._id;
+    const userId = req.logedUser._id;
 
     const deletedUser = await User.findByIdAndDelete(userId);
 
@@ -466,6 +382,7 @@ const DeleteUserProfile = async (req, res) => {
   }
 };
 
+//Get all passengers
 const GetAllPassengers = async (req, res) => {
   try {
     const allPassengers = await User.find({
@@ -482,7 +399,25 @@ const GetAllPassengers = async (req, res) => {
   }
 };
 
-const GetAllInspector = async (req, res) => {
+//Get all Drivers
+const GetAllDriver = async (req, res) => {
+  try {
+    const allInspectors = await User.find({ role: "Driver" });
+
+    if (allInspectors) {
+      return res.status(200).send({ status: true, users: allInspectors });
+    } else {
+      return res
+        .status(400)
+        .send({ status: false, message: "No Driver found" });
+    }
+  } catch (err) {
+    return res.status(500).send({ status: false, message: err.message });
+  }
+};
+
+//Get all Inspectors
+const GetAllInspectors = async (req, res) => {
   try {
     const allInspectors = await User.find({ role: "Inspector" });
 
@@ -491,13 +426,14 @@ const GetAllInspector = async (req, res) => {
     } else {
       return res
         .status(400)
-        .send({ status: false, message: "No inspector found" });
+        .send({ status: false, message: "No Inspector found" });
     }
   } catch (err) {
     return res.status(500).send({ status: false, message: err.message });
   }
 };
 
+//Delete User by ID
 const DeleteUserById = async (req, res) => {
   try {
     const userId = req.params.id;
@@ -519,15 +455,110 @@ const DeleteUserById = async (req, res) => {
     return res.status(500).send({ status: false, message: err.message });
   }
 };
+
+//Update user by ID
+const UpdateUserById = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const { firstName, lastName, phoneNo, nic, passportNo, country, route } =
+      req.body;
+
+    const user = await User.findById(userId);
+
+    if (user) {
+      const data = {
+        firstName: firstName,
+        lastName: lastName,
+        fullName: firstName + " " + lastName,
+        phoneNo: phoneNo,
+        nic: nic,
+        passportNo: passportNo,
+        country: country,
+        route,
+      };
+
+      const updatedUser = await User.findByIdAndUpdate(userId, data);
+
+      if (updatedUser) {
+        return res.status(200).send({
+          status: true,
+          message: "User updated successfully",
+        });
+      } else {
+        return res.status(400).send({
+          status: false,
+          message: "User update failed",
+        });
+      }
+    } else {
+      return res.status(400).send({ status: false, message: "User not found" });
+    }
+  } catch (err) {
+    return res.status(500).send({ status: false, message: err.message });
+  }
+};
+
+const GetNotAllocatedDrivers = async (req, res) => {
+  try {
+    const allDrivers = await User.find({
+      role: "Driver",
+      busDriverStatus: false,
+    });
+
+    return res.status(200).send({ status: true, users: allDrivers });
+  } catch (err) {
+    return res.status(500).send({ status: false, message: err.message });
+  }
+};
+
+const GetAllTravelHistory = async (req, res) => {
+  try {
+    const allTravelHistory = await UserTravel.find();
+
+    return res.status(200).send({ status: true, users: allTravelHistory });
+  } catch (err) {
+    return res.status(500).send({ status: false, message: err.message });
+  }
+};
+
+const GetTravelHistoryByID = async (req, res) => {
+  try {
+    const userID = req.params.id;
+
+    const travelHistory = await UserTravel.find({ passengerID: userID });
+
+    return res.status(200).send({ status: true, travelHistory: travelHistory });
+  } catch (err) {
+    return res.status(500).send({ status: false, message: err.message });
+  }
+};
+
+const GetTravelHistoryBytoken = async (req, res) => {
+  try {
+    const userID = req.logedUser._id;
+
+    const travelHistory = await UserTravel.find({ passengerID: userID });
+
+    return res.status(200).send({ status: true, travelHistory: travelHistory });
+  } catch (err) {
+    return res.status(500).send({ status: false, message: err.message });
+  }
+};
 module.exports = {
   UserRegister,
   UserLogin,
-  UserProfile,
   UserLogout,
+  UserProfile,
   GetOneUser,
   UpdateUser,
   DeleteUserProfile,
   GetAllPassengers,
-  GetAllInspector,
+  GetAllDriver,
+  GetAllInspectors,
   DeleteUserById,
+  UpdateUserById,
+  GetNotAllocatedDrivers,
+  GetAllTravelHistory,
+  GetTravelHistoryByID,
+  GetTravelHistoryBytoken,
 };

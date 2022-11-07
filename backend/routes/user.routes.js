@@ -1,32 +1,41 @@
 const express = require("express");
 const UserRouter = express.Router();
-const userauth = require("../middleware/userauth");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+const userAuth = require("../middlewares/user.middleware");
 
 const {
   UserRegister,
   UserLogin,
-  UserProfile,
   UserLogout,
+  UserProfile,
   GetOneUser,
   UpdateUser,
   DeleteUserProfile,
   GetAllPassengers,
-  GetAllInspector,
+  GetAllDriver,
+  GetAllInspectors,
   DeleteUserById,
+  UpdateUserById,
+  GetNotAllocatedDrivers,
+  GetAllTravelHistory,
+  GetTravelHistoryByID,
+  GetTravelHistoryBytoken,
 } = require("../controllers/user.controller");
 
-UserRouter.post("/registeruser", UserRegister);
-UserRouter.post("/login", UserLogin);
-UserRouter.delete("/deleteuserbyid/:id", DeleteUserById);
-UserRouter.get("/getone/:id", GetOneUser);
-UserRouter.get("/getallpassengers", GetAllPassengers);
-UserRouter.get("/getallinspectors", GetAllInspector);
-
-UserRouter.get("/userprofile", userauth, UserProfile);
-UserRouter.post("/userlogout", userauth, UserLogout);
-UserRouter.put("/updateuser", userauth, UpdateUser);
-UserRouter.delete("/deleteuser", userauth, DeleteUserProfile);
+UserRouter.post("/userRegister", UserRegister);
+UserRouter.post("/userLogin", UserLogin);
+UserRouter.get("/userLogout", userAuth, UserLogout);
+UserRouter.get("/profile", userAuth, UserProfile);
+UserRouter.get("/getOneUser/:id", GetOneUser);
+UserRouter.patch("/updateUser", userAuth, UpdateUser);
+UserRouter.delete("/deleteUser", userAuth, DeleteUserProfile);
+UserRouter.get("/getAllPassengers", GetAllPassengers);
+UserRouter.get("/getAllDrivers", GetAllDriver);
+UserRouter.get("/getAllInspectors", GetAllInspectors);
+UserRouter.delete("/deleteUserById/:id", DeleteUserById);
+UserRouter.patch("/updateUserById/:id", UpdateUserById);
+UserRouter.get("/getNotAllocatedDrivers", GetNotAllocatedDrivers);
+UserRouter.get("/getAllTravelHistory", GetAllTravelHistory);
+UserRouter.get("/getTravelHistoryByID/:id", GetTravelHistoryByID);
+UserRouter.get("/getTravelHistoryBytoken", userAuth, GetTravelHistoryBytoken);
 
 module.exports = UserRouter;

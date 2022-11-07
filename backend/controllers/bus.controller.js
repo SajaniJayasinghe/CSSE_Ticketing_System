@@ -1,100 +1,148 @@
-const Bus = require("../models/bus.models");
+const Bus = require("../models/bus.model");
+const User = require("../models/user.model");
+const BusStateTemp = require("../models/busStateTemp.model");
 
-//add new buses
-const BusRegister = async (req, res) => {
-  let newBus = new Bus(req.body);
-  const isBusCheck = await Bus.find({
-    busNumber: newBus.busNumber,
-  });
-  if (isBusCheck.length == 0) {
-    newBus.save((err) => {
-      if (err) {
-        return res.status(400).json({
-          error: err,
+//Register Bus
+const RegisterBus = async (req, res) => {
+  try {
+    const { busNumber, sheetCount, route, driver } = req.body;
+
+    const busCheck = await Bus.findOne({ busNumber });
+    const DriverDetails = await User.findById(driver);
+    if (!busCheck) {
+      const data = {
+        busNumber,
+        sheetCount,
+        route,
+        driverID: driver,
+        driver: DriverDetails,
+      };
+
+      const newBus = await Bus.create(data);
+      if (newBus) {
+        const updatedata = {
+          _id: newBus._id.valueOf(),
+          sheetCount: newBus.sheetCount,
+          route: newBus.route,
+          busNumber: newBus.busNumber,
+        };
+
+        await User.findByIdAndUpdate(driver, {
+          busDetails: updatedata,
+          busDriverStatus: true,
+          route: route,
+        });
+
+        return res
+          .status(200)
+          .send({ status: true, message: "Bus registered" });
+      } else {
+        return res.status(400).send({
+          satus: false,
+          message: "Somthing went wrong in bus register",
         });
       }
-      return res.status(200).json({
-        success: "New Bus Added Successfully !!",
-      });
-    });
-  } else {
-    return res.status(200).send({
-      message: "Bus already registered",
-    });
+    } else {
+      return res
+        .status(400)
+        .send({ status: false, message: "Bus Already Registered" });
+    }
+  } catch (err) {
+    return res.status(500).send({ status: false, message: err.message });
   }
 };
 
-//get all added buses
+const UpdateBus = async (req, res) => {
+  try {
+    const BusID = req.params.busID;
+    const { busNumber, sheetCount, route, phoneNo, driver } = req.body;
+
+    const DriverDetails = await User.findById(driver);
+
+    var newdata = {
+      busNumber,
+      sheetCount,
+      route,
+      phoneNo,
+      driverID: driver,
+      driver: DriverDetails,
+    };
+
+    const updatedata = {
+      _id: BusID,
+      sheetCount: sheetCount,
+      route: route,
+      busNumber: busNumber,
+    };
+
+    await Bus.findByIdAndUpdate(BusID, newdata);
+    await User.findByIdAndUpdate(driver, {
+      busDetails: updatedata,
+    });
+
+    return res.status(200).send({ status: true, message: "Bus Updated" });
+  } catch (err) {
+    return res.status(500).send({ status: false, message: err.message });
+  }
+};
+
+const DeleteBus = async (req, res) => {
+  try {
+    const BusID = req.params.busID;
+    const busCheck = await Bus.findById(BusID);
+    if (busCheck) {
+      await Bus.findByIdAndDelete(BusID);
+      await User.findByIdAndUpdate(busCheck.driverID, {
+        busDriverStatus: false,
+        busDetails: null,
+        route: null,
+      });
+      return res.status(200).send({ status: true, message: "Bus Deleted" });
+    } else {
+      return res.status(400).send({ status: false, message: "Bus not found" });
+    }
+  } catch (err) {
+    return res.status(500).send({ status: false, message: err.message });
+  }
+};
+
 const GetAllBuses = async (req, res) => {
-  Bus.find().exec((err, bus) => {
-    if (err) {
-      return res.status(400).json({
-        error: err,
-      });
-    }
-    return res.status(200).json({
-      success: true,
-      existingBus: bus,
-    });
-  });
+  try {
+    const buses = await Bus.find();
+    return res.status(200).send({ status: true, data: buses });
+  } catch (err) {
+    return res.status(500).send({ status: false, message: err.message });
+  }
 };
-
-//get specific bus
 const GetOneBus = async (req, res) => {
-  let busNumberPlate = req.params.busNumberPlate;
-  Bus.findById(busNumberPlate, (err, bus) => {
-    if (err) {
-      return res.status(400).json({
-        error: err,
-      });
+  try {
+    const BusID = req.params.busID;
+    const bus = await Bus.findById(BusID);
+    if (bus) {
+      return res.status(200).send({ status: true, busdetails: bus });
+    } else {
+      return res.status(400).send({ status: false, message: "Bus not found" });
     }
-    return res.status(200).json({
-      success: true,
-      existingBus: bus,
-    });
-  });
+  } catch (err) {
+    return res.status(500).send({ status: false, message: err.message });
+  }
 };
 
-//update bus
-const UpdateBus = (req, res) => {
-  Bus.findByIdAndUpdate(
-    req.params.busNumberPlate,
-    {
-      $set: req.body,
-    },
-    (err) => {
-      if (err) {
-        return res.status(400).json({
-          error: err,
-        });
-      }
-      return res.status(200).send({
-        success: "Bus Details Updated Successfully",
-      });
-    }
-  );
-};
-
-//delete Bus
-const DeleteBus = (req, res) => {
-  Bus.findByIdAndRemove(req.params.busNumberPlate).exec((err, deletebus) => {
-    if (err)
-      return res.status(400).json({
-        message: "Deletion Unsuccessfull",
-        err,
-      });
-
-    return res.json({
-      message: "Deletion Successfull",
-      deletebus,
-    });
-  });
+const GetOneBusTemp = async (req, res) => {
+  try {
+    const BusID = req.params.busID;
+    const bus = await BusStateTemp.findOne({ busId: BusID });
+    return res.status(200).send({ status: true, bustempDetails: bus });
+  } catch (err) {
+    return res.status(500).send({ status: false, message: err.message });
+  }
 };
 
 module.exports = {
-  BusRegister,
-  GetAllBuses,
-  GetOneBus,
+  RegisterBus,
   UpdateBus,
   DeleteBus,
+  GetAllBuses,
+  GetOneBus,
+  GetOneBusTemp,
 };
